@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import home from '../images/home.svg';
+
+---
+
+<Layout title="Welcome to Astro.">
+    <main>
+        <aside>
+
+            <!-- {% if registered %}
+                <div class="message success"><h3><span>Cadastro realizado! Faça seu login!</h3></span></div>
+            {% endif %}
+
+            {% if loginFailed %}
+                <div class="message loginFailed"><h3><span>Usuário ou senha incorretos!</h3></span></div>
+            {% endif %} -->
+
+            <h2>Quero Doar</h2>
+            <p>Descartar óleo de cozinha usado de maneira correta é essencial para evitar danos à natureza. Quando jogado na pia ou no vaso sanitário, o óleo contamina rios, lagos e oceanos, comprometendo a vida marinha e a qualidade da água que consumimos. Ao descartá-lo de forma consciente, podemos transformar um problema em uma solução valiosa.</p>
+            <form action="/login" enctype="multipart/form-data" method="post">
+                <input name="username" type="email"placeholder="E-mail">
+                <input name="password" type="password"placeholder="Senha">
+                <input type="submit"value="Entrar">
+            </form>
+            <br />
+            <span class="criarConta"><a href="/register">Ainda não possui uma conta? Cadastre-se!</a></span>
+        </aside>
+        <article>
+            <img src={home} alt="pessoas">
+        </article>
+    </main>    
+</Layout>
+
+<style>
+</style>

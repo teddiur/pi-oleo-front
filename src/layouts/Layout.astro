@@ -1,0 +1,258 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header>
+			<div id="title">
+				<h1>Óleo</h1>
+				<h1>Descarte</h1>
+			</div>
+			<ul>
+				<a href="list"><li>Quero Coletar</li></a>
+				<!-- {% if is_authenticated %}
+				<a href="profile"><li>Minha Conta</li></a>
+				{% endif %}
+				{% if is_authenticated %}
+				<a href="logout"><li>Sair</li></a>
+				{% endif %}
+				{% if not is_authenticated %}
+				<a href="register"><li>Cadastre-se para doar</li></a>
+				{% endif %}
+				{% if not is_authenticated %}
+				<a href="/" id="inscreva-se-btn"><li>Já tem uma conta?</li></a>
+				{% endif %} -->
+			</ul>
+		</header>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+	@font-face {
+		font-family: "poppinsblack";
+		src: url("../components/fonts/poppins-black-webfont.woff2")
+				format("woff2"),
+			url("../components/fonts/poppins-black-webfont.woff") format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "poppinsbold";
+		src: url("../components/fonts/poppins-bold-webfont.woff2")
+				format("woff2"),
+			url("../components/fonts/poppins-bold-webfont.woff") format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "poppinslight";
+		src: url("../components/fonts/poppins-light-webfont.woff2")
+				format("woff2"),
+			url("../components/fonts/poppins-light-webfont.woff") format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "poppinsmedium";
+		src: url("../components/fonts/poppins-medium-webfont.woff2")
+				format("woff2"),
+			url("../components/fonts/poppins-medium-webfont.woff")
+				format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "poppinsregular";
+		src: url("../components/fonts/poppins-regular-webfont.woff2")
+				format("woff2"),
+			url("../components/fonts/poppins-regular-webfont.woff")
+				format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "poppinssemibold";
+		src: url("../components/fonts/poppins-semibold-webfont.woff2")
+				format("woff2"),
+			url("../components/fonts/poppins-semibold-webfont.woff")
+				format("woff");
+		font-weight: normal;
+		font-style: normal;
+	}
+	@media screen and (max-width: 760px) {
+		header {
+			flex-direction: column;
+		}
+
+		main {
+			flex-direction: column;
+		}
+
+		h2 {
+			font-size: 38px;
+		}
+
+		form {
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		input {
+			align-items: center;
+		}
+
+		img {
+			display: none;
+		}
+
+		ul {
+			text-align: center;
+		}
+	}
+	@charset "UTF-8";
+
+	body {
+		background-color: #1dbc4a;
+		color: white;
+		font-family: poppinsregular, Arial, Helvetica, sans-serif;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 15px;
+	}
+
+	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	#title {
+		flex-direction: column;
+		line-height: 10px;
+	}
+
+	li {
+		display: inline-block;
+		margin: 20px;
+	}
+
+	a {
+		color: white;
+	}
+
+	a:hover {
+		color: rgb(56, 56, 58);
+		transition: 0.3s all;
+	}
+
+	h1 {
+		font-weight: 200;
+	}
+
+	main {
+		display: flex;
+		flex-direction: row;
+		margin-top: 50px;
+	}
+
+	h2 {
+		font-size: 56px;
+		line-height: 10px;
+		font-family: poppinsmedium, Arial, Helvetica, sans-serif;
+	}
+
+	span {
+		color: rgb(54, 58, 54);
+	}
+
+	p {
+		line-height: 20px;
+		max-width: 500px;
+		font-family: poppinslight, Arial, Helvetica, sans-serif;
+	}
+
+	img {
+		width: 600px;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		width: 70%;
+	}
+
+	form [type="submit"] {
+		height: 50px;
+		width: 50%;
+		background-color: rgb(54, 58, 54);
+		color: white;
+		font-weight: bold;
+	}
+
+	form [type="submit"]:hover {
+		cursor: pointer;
+		background-color: #2f4435;
+	}
+
+	input {
+		margin-top: 20px;
+		height: 20px;
+		padding: 15px;
+		border-radius: 20px;
+		border: none;
+		font-size: 15px;
+	}
+
+	.criarConta > a {
+		text-decoration: none;
+		padding: 0.9em 0.85em;
+		position: inherit;
+		text-align: center;
+		position: center;
+	}
+
+	.message {
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+
+	.success {
+		background-color: #d4edda;
+		color: #155724;
+		width: 360px;
+		border: 0.2px solid #c3e6cb;
+		border-radius: 25px;
+	}
+
+	.loginFailed {
+		background-color: #e08386;
+		color: #f5fcf7;
+		width: 300px;
+		border: 0.2px solid #d4a6a8;
+		border-radius: 25px;
+	}
+</style>
