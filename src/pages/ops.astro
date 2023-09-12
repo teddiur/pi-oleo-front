@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+const user = null;
+if (!user) {
+  return Astro.redirect("/");
+}
+---
+
+<Layout title="Teste nunca aparece">
+  <body>hehe</body>
+</Layout>

@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import home from '../images/home.svg';
+export const prerender = true;
+Astro.redirect('/ops')
 
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Bem vindo ao Óleo Descarte">
     <main>
         <aside>
 
@@ -23,11 +26,11 @@ import home from '../images/home.svg';
                 <input name="password" type="password"placeholder="Senha">
                 <input type="submit"value="Entrar">
             </form>
-            <br />
+            <!-- <br /> -->
             <span class="criarConta"><a href="/register">Ainda não possui uma conta? Cadastre-se!</a></span>
         </aside>
         <article>
-            <img src={home} alt="pessoas">
+            <Image src={home} alt="pessoas">
         </article>
     </main>    
 </Layout>
