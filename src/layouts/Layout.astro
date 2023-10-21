@@ -1,258 +1,195 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+import hamburguer from "../images/hamburguer.svg";
+import { Image } from "astro:assets";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<header>
-			<div id="title">
-				<h1>Óleo</h1>
-				<h1>Descarte</h1>
-			</div>
-			<ul>
-				<a href="list"><li>Quero Coletar</li></a>
-				<!-- {% if is_authenticated %}
-				<a href="profile"><li>Minha Conta</li></a>
-				{% endif %}
-				{% if is_authenticated %}
-				<a href="logout"><li>Sair</li></a>
-				{% endif %}
-				{% if not is_authenticated %}
-				<a href="register"><li>Cadastre-se para doar</li></a>
-				{% endif %}
-				{% if not is_authenticated %}
-				<a href="/" id="inscreva-se-btn"><li>Já tem uma conta?</li></a>
-				{% endif %} -->
-			</ul>
-		</header>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header id="title">
+      <h1>Óleo Descarte</h1>
+      <Image src={hamburguer} alt="Menu" width={20} height={20} />
+    </header>
+    <slot />
+    <footer>
+      <h3 class="footer-title">Óleo Descarte</h3>
+      <nav>
+        <ul class="footer-list">
+          <li><a class="footer-link" href="/contato">Contato</a></li>
+          <li><a class="footer-link" href="/duvidas">Dúvidas</a></li>
+          <li>
+            <a class="footer-link" href="/onde-descartar">Onde descartar?</a>
+          </li>
+        </ul>
+      </nav>
+      <p class="footer-text">
+        © Óleo Descarte 2023. Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
 </html>
 <style is:global>
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-	@font-face {
-		font-family: "poppinsblack";
-		src: url("../components/fonts/poppins-black-webfont.woff2")
-				format("woff2"),
-			url("../components/fonts/poppins-black-webfont.woff") format("woff");
-		font-weight: normal;
-		font-style: normal;
-	}
+  @charset "UTF-8";
+  :root {
+    --footer-size: 120px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .footer-title,
+  .footer-list {
+    margin: 0;
+  }
+  .footer-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-link,
+  .footer-text {
+    margin: 0;
+  }
 
-	@font-face {
-		font-family: "poppinsbold";
-		src: url("../components/fonts/poppins-bold-webfont.woff2")
-				format("woff2"),
-			url("../components/fonts/poppins-bold-webfont.woff") format("woff");
-		font-weight: normal;
-		font-style: normal;
-	}
+  footer {
+    width: 100%;
+    background-color: #0a3f19;
+    position: absolute;
+    bottom: 0;
+    height: var(--footer-size);
+    color: white;
+  }
 
-	@font-face {
-		font-family: "poppinslight";
-		src: url("../components/fonts/poppins-light-webfont.woff2")
-				format("woff2"),
-			url("../components/fonts/poppins-light-webfont.woff") format("woff");
-		font-weight: normal;
-		font-style: normal;
-	}
+  header#title {
+    background-color: #128232;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px 0 30px;
+    color: white;
+  }
+  html {
+    width: 100%;
+    min-height: 100%;
+  }
+  body {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: var(--footer-size);
+    font-family: poppinsregular, Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
 
-	@font-face {
-		font-family: "poppinsmedium";
-		src: url("../components/fonts/poppins-medium-webfont.woff2")
-				format("woff2"),
-			url("../components/fonts/poppins-medium-webfont.woff")
-				format("woff");
-		font-weight: normal;
-		font-style: normal;
-	}
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-	@font-face {
-		font-family: "poppinsregular";
-		src: url("../components/fonts/poppins-regular-webfont.woff2")
-				format("woff2"),
-			url("../components/fonts/poppins-regular-webfont.woff")
-				format("woff");
-		font-weight: normal;
-		font-style: normal;
-	}
+  li {
+    display: inline-block;
+  }
 
-	@font-face {
-		font-family: "poppinssemibold";
-		src: url("../components/fonts/poppins-semibold-webfont.woff2")
-				format("woff2"),
-			url("../components/fonts/poppins-semibold-webfont.woff")
-				format("woff");
-		font-weight: normal;
-		font-style: normal;
-	}
-	@media screen and (max-width: 760px) {
-		header {
-			flex-direction: column;
-		}
+  a {
+    color: white;
+  }
 
-		main {
-			flex-direction: column;
-		}
+  a:hover {
+    color: rgb(56, 56, 58);
+    transition: 0.3s all;
+  }
 
-		h2 {
-			font-size: 38px;
-		}
+  h1 {
+    font-weight: 200;
+  }
 
-		form {
-			margin: 0 auto;
-			width: 100%;
-		}
+  main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+  }
 
-		input {
-			align-items: center;
-		}
+  h2 {
+    font-size: 56px;
+    line-height: 10px;
+    font-family: poppinsmedium, Arial, Helvetica, sans-serif;
+  }
 
-		img {
-			display: none;
-		}
+  span {
+    color: rgb(54, 58, 54);
+  }
 
-		ul {
-			text-align: center;
-		}
-	}
-	@charset "UTF-8";
+  p {
+    max-width: 500px;
+    font-family: poppinslight, Arial, Helvetica, sans-serif;
+  }
 
-	body {
-		background-color: #1dbc4a;
-		color: white;
-		font-family: poppinsregular, Arial, Helvetica, sans-serif;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 15px;
-	}
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
 
-	header {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
+  form [type="submit"] {
+    height: 50px;
+    width: 50%;
+    background-color: rgb(54, 58, 54);
+    color: white;
+    font-weight: bold;
+  }
 
-	#title {
-		flex-direction: column;
-		line-height: 10px;
-	}
+  form [type="submit"]:hover {
+    cursor: pointer;
+    background-color: #2f4435;
+  }
 
-	li {
-		display: inline-block;
-		margin: 20px;
-	}
+  input {
+    margin-top: 20px;
+    height: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #51525196;
+    font-size: 15px;
+  }
 
-	a {
-		color: white;
-	}
+  .criarConta > a {
+    text-decoration: none;
+    padding: 0.9em 0.85em;
+    position: inherit;
+    text-align: center;
+    position: center;
+  }
 
-	a:hover {
-		color: rgb(56, 56, 58);
-		transition: 0.3s all;
-	}
+  .message {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
 
-	h1 {
-		font-weight: 200;
-	}
+  .success {
+    background-color: #d4edda;
+    color: #155724;
+    width: 360px;
+    border: 0.2px solid #c3e6cb;
+    border-radius: 25px;
+  }
 
-	main {
-		display: flex;
-		flex-direction: row;
-		margin-top: 50px;
-	}
-
-	h2 {
-		font-size: 56px;
-		line-height: 10px;
-		font-family: poppinsmedium, Arial, Helvetica, sans-serif;
-	}
-
-	span {
-		color: rgb(54, 58, 54);
-	}
-
-	p {
-		line-height: 20px;
-		max-width: 500px;
-		font-family: poppinslight, Arial, Helvetica, sans-serif;
-	}
-
-	img {
-		width: 600px;
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-		width: 70%;
-	}
-
-	form [type="submit"] {
-		height: 50px;
-		width: 50%;
-		background-color: rgb(54, 58, 54);
-		color: white;
-		font-weight: bold;
-	}
-
-	form [type="submit"]:hover {
-		cursor: pointer;
-		background-color: #2f4435;
-	}
-
-	input {
-		margin-top: 20px;
-		height: 20px;
-		padding: 15px;
-		border-radius: 20px;
-		border: none;
-		font-size: 15px;
-	}
-
-	.criarConta > a {
-		text-decoration: none;
-		padding: 0.9em 0.85em;
-		position: inherit;
-		text-align: center;
-		position: center;
-	}
-
-	.message {
-		padding: 10px;
-		margin-bottom: 10px;
-	}
-
-	.success {
-		background-color: #d4edda;
-		color: #155724;
-		width: 360px;
-		border: 0.2px solid #c3e6cb;
-		border-radius: 25px;
-	}
-
-	.loginFailed {
-		background-color: #e08386;
-		color: #f5fcf7;
-		width: 300px;
-		border: 0.2px solid #d4a6a8;
-		border-radius: 25px;
-	}
+  .loginFailed {
+    background-color: #e08386;
+    color: #f5fcf7;
+    width: 300px;
+    border: 0.2px solid #d4a6a8;
+    border-radius: 25px;
+  }
 </style>

@@ -1,0 +1,30 @@
+---
+import { UserModal } from "../components/UserModal";
+import { Users } from "../components/Users";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Óleo Descarte">
+  <UserModal client:load />
+  <div>
+    <br />
+    <br />
+    <aside>
+      <h2>Colete óleo aqui!</h2>
+      <p>
+        Peça para retirar com um dos doadores disponíveis e avisaremos sobre seu
+        interesse.
+      </p><br />
+    </aside>
+    <table>
+      /
+      <tr>
+        <th>Nome</th>
+        <th>Cidade</th>
+        <th>Bairro</th>
+        <th>Litros de óleo</th>
+      </tr>
+      <Users />
+    </table>
+  </div>
+</Layout>

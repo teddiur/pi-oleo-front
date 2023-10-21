@@ -1,21 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
 import home from "../images/home.svg";
-export const prerender = true;
+import { Image } from "astro:assets";
 ---
 
-<Layout title="Bem vindo ao Óleo Descarte">
+<Layout title="Login">
   <main>
     <aside>
-      <!-- {% if registered %}
-                <div class="message success"><h3><span>Cadastro realizado! Faça seu login!</h3></span></div>
-            {% endif %}
-
-            {% if loginFailed %}
-                <div class="message loginFailed"><h3><span>Usuário ou senha incorretos!</h3></span></div>
-            {% endif %} -->
-
       <h2>Quero Doar</h2>
       <p>
         Descartar óleo de cozinha usado de maneira correta é essencial para
@@ -29,14 +20,13 @@ export const prerender = true;
         <input name="password" type="password" placeholder="Senha" />
         <input type="submit" value="Entrar" />
       </form>
+      <br />
       <span class="criarConta"
-        ><a href="/registrar">Ainda não possui uma conta? Cadastre-se!</a></span
+        ><a href="/register">Ainda não possui uma conta? Cadastre-se!</a></span
       >
     </aside>
     <article>
-      <Image src={home} alt="pessoas" width={600} />
+      <Image src={home} alt="pessoas" />
     </article>
   </main>
-
-  <style></style>
 </Layout>

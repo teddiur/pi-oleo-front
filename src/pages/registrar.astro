@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import home from "../images/home.svg";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Óleo Descarte">
+  <main>
+    <aside>
+      <h2><span>Criar conta</span></h2>
+      <p>
+        Cadastre-se e faça parte da comunidade Óleo Descarte, ajude no bem-estar
+        de todos e na conservação da natureza.
+      </p>
+      <form action="/create-user" method="post">
+        <input type="text" placeholder="Nome" name="name" required />
+        <input type="email" placeholder="E-mail" name="email" required />
+        <input
+          type="password"
+          placeholder="Senha"
+          name="hashed_password"
+          required
+        />
+        <input type="text" placeholder="Cidade" name="city" required />
+        <input type="text" placeholder="Bairro" name="district" required />
+        <input
+          type="text"
+          placeholder="Quantidade de Óleo"
+          name="oil_quantity"
+          required
+        />
+        <input type="submit" value="Cadastrar" />
+      </form>
+      <br />
+      <span class="criarConta"
+        ><a href="/">Já possui uma conta? Faça Login!</a></span
+      >
+    </aside>
+    <article>
+      <Image src={home} alt="Tela de cadastro - ilustração" />
+    </article>
+  </main>
+</Layout>

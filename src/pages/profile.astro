@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="profile">
+  <form class="form" action="update-user" method="post">
+    <h2>Perfil usuário</h2>
+    <p>
+      <input name="name" placeholder="Nome Completo" />
+    </p>
+  </form>
+  <p>
+    <input name="email" placeholder="E-mail" />
+  </p>
+
+  <p>
+    <input name="district" placeholder="Bairro" />
+  </p>
+  <p>
+    <input name="city" placeholder="Cidade" />
+  </p>
+  <p>
+    <input name="oil_quantity" placeholder="Quantidade de óleo" />
+  </p>
+  <button class="register-button" name="action" value="update"
+    >Atualizar dados</button
+  >
+  <button class="delete-button" name="action" value="delete"
+    >Deletar Conta</button
+  >
+</Layout>
