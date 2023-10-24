@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GoBack from '../components/GoBack.astro'
+import { Image } from "astro:assets";
+import email from "../images/email.svg";
+---
+
+<Layout title="contato">
+    <GoBack />
+  <Image src={email} alt="email" />
+  <p>Entre em contato via e-mail</p>
+  <a href="mailto:contato.oleodescarte@gmail.com.br">contato@oleodescarte.com.br</a>
+  <style>
+    a {
+        color:black;
+    }
+    </style>
+</Layout>

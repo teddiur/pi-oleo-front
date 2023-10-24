@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GoBack from '../components/GoBack.astro'
+import { Image } from "astro:assets";
+import email from "../images/email.svg";
+---
+
+<Layout title="contato">
+    <GoBack />
+  <h1>Onde descartar?</h1>
+  <p class="title">Lubleste</p>
+  <p class="address">Rua Pedro de Andrade, 226.</p>
+  <style>
+    .title {
+        font-weight: bold;
+        margin: 0;
+    }
+    .address {
+        margin: 0;
+    }
+    </style>
+</Layout>
