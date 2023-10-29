@@ -1,0 +1,18 @@
+   .base {
+         border-radius: 15px;
+         min-width: 200px;
+         max-width: 90%;
+         border: none;
+         padding: 7px 15px;
+         text-align: center;
+         font-weight: 700;
+         cursor: pointer;
+       }
+       .primary {
+         background-color: #1dbc4a;
+         color: #ffffff;
+       }
+       .secondary {
+         color: #165b2a;
+         background-color: #ffffff;
+       }

@@ -1,42 +1,103 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import home from "../images/home.svg";
+import home from "../images/home2.png";
+import { Button } from "../components/Button/Button.jsx";
+import Title from "../components/Title.astro";
 export const prerender = true;
 ---
 
 <Layout title="Bem vindo ao Óleo Descarte">
   <main>
-    <aside>
-      <!-- {% if registered %}
-                <div class="message success"><h3><span>Cadastro realizado! Faça seu login!</h3></span></div>
-            {% endif %}
-
-            {% if loginFailed %}
-                <div class="message loginFailed"><h3><span>Usuário ou senha incorretos!</h3></span></div>
-            {% endif %} -->
-
-      <h2>Quero Doar</h2>
-      <p>
-        Descartar óleo de cozinha usado de maneira correta é essencial para
-        evitar danos à natureza. Quando jogado na pia ou no vaso sanitário, o
-        óleo contamina rios, lagos e oceanos, comprometendo a vida marinha e a
-        qualidade da água que consumimos. Ao descartá-lo de forma consciente,
-        podemos transformar um problema em uma solução valiosa.
+    <article class="padding-x" style="padding-top: 45px">
+      <Title>Faça o descarte correto de Óleo de Cozinha usado</Title>
+      <p style="font-size:14px">
+        A <span class="emphasis bold">Óleo Descarte</span> conecta pessoas e
+        empresas para que o descarte de óleo ganhe o destino correto.
       </p>
-      <form action="/login" enctype="multipart/form-data" method="post">
-        <input name="username" type="email" placeholder="E-mail" />
-        <input name="password" type="password" placeholder="Senha" />
-        <input type="submit" value="Entrar" />
-      </form>
-      <span class="criarConta"
-        ><a href="/registrar">Ainda não possui uma conta? Cadastre-se!</a></span
-      >
-    </aside>
-    <article>
-      <Image src={home} alt="pessoas" width={600} />
+      <Button title="Quero fazer parte" path="login" client:load />
+    </article>
+    <article
+      class="padding-x"
+      style="background: radial-gradient(100% 100% at 49% 0%, rgba(8, 108, 36, 0.09) 0%, rgba(192, 242, 206, 0.00) 50%, rgba(23, 143, 57, 0.09) 98.96%);"
+    >
+      <Title size="M">
+        Você sabia que 1 litro de óleo pode poluir até 25 mil litros de água?
+      </Title>
+      <p>
+        A <span class="bold">Óleo Descarte</span> foi criada para ajudar pessoas
+        de diferentes locallidades a descartar seu óleo de cozinha usado de
+        maneira eficiente e correta, acreditamos que juntos, podemos transformar
+        o nosso futuro e o bem estar de todos que vivem em nosso planeta.
+      </p>
+      <Button
+        title="Quero o destino certo para meu óleo usado"
+        path="login"
+        client:load
+      />
+    </article>
+    <article class="green padding-x" style="padding-bottom: 40px;">
+      <Title size="M" variant="secondary">
+        Veja como é fácil fazer a doação do seu óleo de cozinha usado
+      </Title>
+      <Image src={home} alt="pessoas" class="image" />
+      <ul>
+        <li>Faça seu cadastro ou login no site da Óleo Descarte;</li>
+        <li>
+          Complete um formulário simples com informações sobre a quantidade de
+          óleo e sua localização;
+        </li>
+        <li>
+          A plataforma conecta automaticamente doadores a empresas parceiras
+          para a coleta sustentável;
+        </li>
+        <li>Empresas parceiras agendam a coleta no endereço fornecido;</li>
+        <li>
+          Processo conveniente e sem custos para o doador, promovendo
+          responsabilidade ambiental e social;
+        </li>
+        <li>Destino correto para o óleo de cozinha usado.</li>
+      </ul>
+      <Button
+        title="Quero o destino certo para meu óleo usado"
+        variant="secondary"
+        path="login"
+        client:load
+      />
     </article>
   </main>
-
-  <style></style>
 </Layout>
+<style>
+  .green {
+    background-color: #1ab945;
+    color: #fff;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .image {
+    max-width: 80%;
+    min-width: 300px;
+    margin: 0 auto;
+  }
+  .padding-x {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+  article > * {
+    max-width: 350px;
+  }
+  .emphasis {
+    color: #1dbc4a;
+  }
+  .bold {
+    font-weight: 700;
+  }
+</style>

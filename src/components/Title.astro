@@ -1,0 +1,27 @@
+---
+const { variant = "primary", size = "G" } = Astro.props;
+---
+
+<h1 class=`base ${variant} ${size}`>
+  <slot />
+</h1>
+<style>
+  .base {
+    margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .primary {
+    color: #1dbc4a;
+  }
+  .secondary {
+    color: #fff;
+  }
+  .G {
+    font-size: 24px;
+  }
+  .M {
+    font-size: 18px;
+  }
+</style>
