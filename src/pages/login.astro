@@ -2,31 +2,81 @@
 import Layout from "../layouts/Layout.astro";
 import home from "../images/home.svg";
 import { Image } from "astro:assets";
+import GoBack from "../components/GoBack.astro";
+import { Button } from "../components/Button/Button.jsx";
+import Title from "../components/Title.astro";
+import "../styles/global.css";
 ---
 
 <Layout title="Login">
   <main>
-    <aside>
-      <h2>Quero Doar</h2>
-      <p>
-        Descartar óleo de cozinha usado de maneira correta é essencial para
-        evitar danos à natureza. Quando jogado na pia ou no vaso sanitário, o
-        óleo contamina rios, lagos e oceanos, comprometendo a vida marinha e a
-        qualidade da água que consumimos. Ao descartá-lo de forma consciente,
-        podemos transformar um problema em uma solução valiosa.
-      </p>
+    <GoBack />
+    <div class="holder">
+      <Title variant="low-hue" size="M">Entrar em sua conta</Title>
+      <span class="subtitle">
+        Ainda não tem cadastro?
+        <a href="/register">Crie sua conta aqui</a>
+      </span>
       <form action="/login" enctype="multipart/form-data" method="post">
-        <input name="username" type="email" placeholder="E-mail" />
-        <input name="password" type="password" placeholder="Senha" />
-        <input type="submit" value="Entrar" />
+        <label>E-mail</label>
+        <input
+          name="username"
+          id="username"
+          type="email"
+          placeholder="usuario@email.com.br"
+        />
+        <label>Senha</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="*******"
+        />
+        <a
+          id="username"
+          href="/esqueci-senha"
+          style="font-size: 12px; font-weight: 500; margin-top: 10px;"
+          >Esqueci minha senha</a
+        >
+        <div style="margin: 20px auto 0 auto">
+          <Button title="Entrar" onClick={() => {}} />
+        </div>
       </form>
-      <br />
-      <span class="criarConta"
-        ><a href="/register">Ainda não possui uma conta? Cadastre-se!</a></span
-      >
-    </aside>
-    <article>
-      <Image src={home} alt="pessoas" />
-    </article>
+    </div>
   </main>
 </Layout>
+<style>
+  main {
+    margin: 30px;
+  }
+  .subtitle {
+    font-weight: 600;
+    font-size: 12px;
+    color: #515251;
+    margin-top: 15px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .holder {
+    margin: 0 auto;
+    max-width: 350px;
+    padding-top: 30px;
+  }
+  a {
+    color: #1dbc4a;
+  }
+  input {
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(81, 82, 81, 0.7);
+  }
+  input:focus {
+    border-color: #1ab945;
+    outline: #1ab945;
+  }
+  label {
+    margin-top: 20px;
+  }
+</style>
