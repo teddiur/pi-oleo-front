@@ -1,18 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GoBack from '../components/GoBack.astro'
+import GoBack from "../components/GoBack.astro";
 import { Image } from "astro:assets";
 import email from "../images/email.svg";
 ---
 
-<Layout title="contato">
-    <GoBack />
-  <Image src={email} alt="email" />
-  <p>Entre em contato via e-mail</p>
-  <a href="mailto:contato.oleodescarte@gmail.com.br">contato@oleodescarte.com.br</a>
+<Layout title="Contato">
+  <GoBack />
+  <div class="container">
+    <span>
+      <Image src={email} alt="email" />
+    </span>
+    <h1>Entre em contato via e-mail</h1>
+    <a href="mailto:contato.oleodescarte@gmail.com.br"
+      >contato@oleodescarte.com.br</a
+    >
+  </div>
   <style>
-    a {
-        color:black;
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      max-width: 350px;
+      margin: 0 auto;
     }
-    </style>
+    h1 {
+      font-size: 1.25rem;
+      color: #128232;
+      font-weight: 700;
+    }
+    a {
+      color: #4c4d4c;
+    }
+    span {
+      background-color: rgba(172, 222, 186, 0.09);
+      border-radius: 50%;
+      padding: 1rem;
+      width: fit-content;
+      height: fit-content;
+      display: inline-block;
+    }
+  </style>
 </Layout>
