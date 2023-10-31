@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import GoBack from "../components/GoBack.astro";
 import { Button } from "../components/Button/Button.jsx";
 import Title from "../components/Title.astro";
-import Input from "../components/Input.astro";
+import { Input } from "../components/Input/Input.jsx";
 import "../styles/global.css";
 ---
 
@@ -14,7 +14,7 @@ import "../styles/global.css";
       <Title variant="low-hue" size="M">Entrar em sua conta</Title>
       <span class="subtitle">
         Ainda não tem cadastro?
-        <a href="/register">Crie sua conta aqui</a>
+        <a href="/registrar">Crie sua conta aqui</a>
       </span>
       <form action="/login" enctype="multipart/form-data" method="post">
         <Input
@@ -23,7 +23,7 @@ import "../styles/global.css";
           id="username"
           type="email"
           placeholder="usuario@email.com.br"
-          labelStyle="margin-top: 20px"
+          labelStyle={{ marginTop: "20px" }}
         />
         <Input
           label="Senha"
@@ -31,7 +31,7 @@ import "../styles/global.css";
           name="password"
           type="password"
           placeholder="*******"
-          labelStyle="margin-top: 20px"
+          labelStyle={{ marginTop: "20px" }}
         />
         <a
           id="username"
@@ -69,3 +69,4 @@ import "../styles/global.css";
     color: #1dbc4a;
   }
 </style>
+ ../components/Input.jsx/index.js

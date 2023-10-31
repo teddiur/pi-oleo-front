@@ -2,42 +2,38 @@
 import Layout from "../layouts/Layout.astro";
 import home from "../images/home.svg";
 import { Image } from "astro:assets";
+import GoBack from "../components/GoBack.astro";
+import Title from "../components/Title.astro";
+import { Register } from "../components/Register/Register.jsx";
 ---
 
 <Layout title="Óleo Descarte">
   <main>
-    <aside>
-      <h2><span>Criar conta</span></h2>
-      <p>
-        Cadastre-se e faça parte da comunidade Óleo Descarte, ajude no bem-estar
-        de todos e na conservação da natureza.
-      </p>
-      <form action="/create-user" method="post">
-        <input type="text" placeholder="Nome" name="name" required />
-        <input type="email" placeholder="E-mail" name="email" required />
-        <input
-          type="password"
-          placeholder="Senha"
-          name="hashed_password"
-          required
-        />
-        <input type="text" placeholder="Cidade" name="city" required />
-        <input type="text" placeholder="Bairro" name="district" required />
-        <input
-          type="text"
-          placeholder="Quantidade de Óleo"
-          name="oil_quantity"
-          required
-        />
-        <input type="submit" value="Cadastrar" />
-      </form>
-      <br />
-      <span class="criarConta"
-        ><a href="/">Já possui uma conta? Faça Login!</a></span
-      >
-    </aside>
-    <article>
-      <Image src={home} alt="Tela de cadastro - ilustração" />
-    </article>
+    <GoBack />
+    <Title variant="low-hue" size="M">
+      Para se cadastrar. Preencha os dados abaixo.
+    </Title>
+
+    <p>Escolha o seu perfil:</p>
+    <Register client:load />
+    <span class="signed-up"
+      >Já tem cadastro? <a href="/login">Faça seu login</a></span
+    >
   </main>
 </Layout>
+<style>
+  main {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+  }
+  .signed-up {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  a {
+    color: #1dbc4a;
+    font-weight: 600;
+  }
+</style>
