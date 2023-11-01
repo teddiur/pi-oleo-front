@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GoBack from "../components/GoBack.astro";
+import Title from "../components/Title.astro";
+import { Image } from "astro:assets";
+import email from "../images/email.svg";
+---
+
+<Layout title="Perguntas Frequentes">
+  <div class="container">
+    <GoBack />
+    <Title>Perguntas Frequentes - FAQ</Title>
+    <p>
+      Aqui você encontra informações sobre as principais dúvidas sobre o
+      descarte de óleo de cozinha usado.
+    </p>
+    <section>
+      <details>
+        <summary>Como cadastrar a quantidade de óleo de cozinha usado?</summary>
+        <p>
+          Se você já possui uma conta em seu nome, basta acessar a sua área de
+          login e cadastrar as informações de quantidade, local e horário para a
+          retirada do resíduo de óleo de cozinha.<br /> Caso ainda não tenha uma
+          conta, você deve realizar um rápido cadastro para ter acesso a sua
+          área logada e seguir os passos informados acima.
+        </p>
+      </details>
+      <details>
+        <summary>Esqueci a minha senha, o que devo fazer?</summary>
+      </details>
+      <details>
+        <summary>Posso recolher óleo para fazer sabão caseiro?</summary>
+      </details>
+      <details>
+        <summary>Posso levar meu óleo a um posto de coleta?</summary>
+      </details>
+    </section>
+  </div>
+  <style>
+    .container {
+      margin: 2rem auto;
+      max-width: 22rem;
+    }
+    section {
+      background-color: rgba(172, 222, 186, 0.09);
+      padding: 2rem 1rem;
+      border-radius: 0.5rem;
+    }
+    details {
+      margin: 1rem 0;
+    }
+    summary::marker {
+      color: #1dbc4a;
+    }
+    summary {
+      font-weight: 600;
+      color: #4c4d4c;
+    }
+    p {
+      color: #4c4d4c;
+    }
+    h1 {
+    }
+    a {
+      color: black;
+    }
+  </style>
+</Layout>

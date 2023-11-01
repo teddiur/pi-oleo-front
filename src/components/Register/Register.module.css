@@ -28,7 +28,7 @@ input:checked+.label {
 .formContainer {
     display: flex;
     flex-direction: column;
-    max-width: 350px;
+    max-width: 22rem;
 }
 .buttonContainer {
     display: flex;
