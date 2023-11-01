@@ -10,6 +10,7 @@ export const Button = ({
   path,
   onClick,
   onClickFailure,
+  buttonStyle = {},
 }) => {
   const buttonId = `${Math.floor(Math.random() * 1000)}`;
   const onClickButton = path
@@ -30,6 +31,7 @@ export const Button = ({
       className={`${styles.base} ${styleVariant}`}
       id={buttonId}
       onClick={onClickButton}
+      style={buttonStyle}
     >
       {title}
     </button>

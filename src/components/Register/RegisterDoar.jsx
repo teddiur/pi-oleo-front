@@ -1,9 +1,4 @@
-import { useState } from "react";
 import { Input } from "../Input/Input.jsx";
-import doador1 from "../../images/doador.svg";
-import doador2 from "../../images/doador-active.svg";
-import retirador1 from "../../images/recebedor.svg";
-import retirador2 from "../../images/recebedor-active.svg";
 import styles from "./Register.module.css";
 import { Button } from "../Button/Button.jsx";
 

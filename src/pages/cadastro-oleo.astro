@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Input } from "../components/Input/Input.jsx";
+import { Image } from "astro:assets";
+import Title from "../components/Title.astro";
+import success from "../images/success.svg";
+import { Button } from "../components/Button/Button.jsx";
+
+const liters = Array.from({ length: 10 }, (_, index) => index + 1);
+const days = [
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado",
+  "Domingo",
+];
+---
+
+<Layout title="Cadastro - Óleo Descarte">
+  <script></script>
+  <main>
+    <form class="container">
+      <Title variant="low-hue">
+        Para cadastrar seu óleo. Preencha os dados abaixo.
+      </Title>
+      <label class="first" for="liters">Quantidade em litros</label>
+      <select id="liters" name="liters">
+        {
+          liters.map((x) => (
+            <option value={x}>
+              {x} {x === 1 ? " Litro" : " Litros"}
+            </option>
+          ))
+        }
+      </select>
+      <p>Qual o endereço que vai ser retirado?</p>
+      <Input
+        label="CEP"
+        id="cep"
+        name="cep"
+        type="text"
+        placeholder="Digite o CEP"
+        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+      />
+      <Input
+        label="Endereço"
+        id="address"
+        name="address"
+        type="text"
+        placeholder="Digite a rua ou avenida"
+        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+      />
+      <Input
+        label="Número da residência"
+        id="number"
+        name="number"
+        type="text"
+        placeholder="Digite o CEP"
+        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+      />
+      <Input
+        label="Complemento"
+        id="complement"
+        name="complement"
+        type="text"
+        placeholder="Apartamento 21"
+        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+      />
+      <label for="day">Qual sua disponibilidade para a retirada?</label>
+      <select id="day" name="day">
+        {days.map((x) => <option value={x}>{x}</option>)}
+      </select>
+      <Input
+        label="Telefone para contato com DDD"
+        id="telephone"
+        name="telephone"
+        type="text"
+        placeholder="(99) 99999-9999"
+        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+        inputStyle={{ marginBottom: "1.5rem" }}
+      />
+      <Button
+        title="Registrar"
+        path="login"
+        client:load
+        buttonStyle={{ margin: "0 auto" }}
+      />
+    </form>
+  </main>
+</Layout>
+<style>
+  main {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+    max-width: 22rem;
+  }
+  select {
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(81, 82, 81, 0.7);
+    background-color: white;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin-top: 1rem;
+  }
+  label[for="day"] {
+    margin-bottom: 0.25rem;
+  }
+</style>

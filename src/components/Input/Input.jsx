@@ -7,6 +7,7 @@ export const Input = ({
   placeholder,
   name,
   labelStyle = {},
+  inputStyle = {},
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ export const Input = ({
         type={type}
         placeholder={placeholder}
         className={styles.input}
+        style={inputStyle}
       />
     </>
   );
