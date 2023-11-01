@@ -1,9 +1,9 @@
    .base {
-         border-radius: 15px;
+         border-radius: 1rem;
          min-width: 200px;
          max-width: 90%;
          border: none;
-         padding: 7px 15px;
+         padding: 0.5rem 1rem;
          text-align: center;
          font-weight: 700;
          cursor: pointer;
