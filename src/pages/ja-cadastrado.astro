@@ -1,16 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import success from "../images/success.svg";
+import cadastrado from "../images/cadastrado.svg";
 import { Button } from "../components/Button/Button.jsx";
 ---
 
-<Layout title="Cadastro - Óleo Descarte">
+<Layout title="Já Cadastrado - Óleo Descarte">
   <script></script>
   <main>
     <div class="container">
-      <Image src={success} width="100" height="100" alt="Sucesso" />
-      <p>Sua conta foi <span class="emphasis"> criada com sucesso!</span></p>
+      <Image src={cadastrado} width="100" height="100" alt="Bandeira" />
+      <p>
+        E-mail <span class="emphasis">já cadastrado.</span>
+        <br />Por favor, faça login em sua conta.
+      </p>
       <Button title="Acessar minha conta" path="login" client:load />
     </div>
   </main>
@@ -31,9 +34,9 @@ import { Button } from "../components/Button/Button.jsx";
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 22rem;
-    margin-top: 1rem;
     border-radius: 0.5rem;
+    margin-top: 1rem;
+    max-width: 22rem;
   }
   .emphasis {
     color: #1dbc4a;
