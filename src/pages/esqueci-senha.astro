@@ -8,6 +8,11 @@ import { Input } from "../components/Input/Input";
   <script></script>
   <main>
     <div class="container">
+      <dialog class="modal" id="modal">
+        <p>Nova senha enviada para o e-mail cadastrado.</p>
+        <a href="login">Voltar para o login</a>
+        <Button title="Fechar" id="closeModal" client:load />
+      </dialog>
       <p>Digite o e-mail cadastrado para redefinir sua senha</p>
       <span class="input-container">
         <Input
@@ -19,12 +24,46 @@ import { Input } from "../components/Input/Input";
           inputStyle={{ marginBottom: "0.5rem" }}
         />
       </span>
-      <Button title="Redefinir Senha" path="login" client:load />
+      <Button title="Redefinir Senha" id="redefinir" client:load />
       <a href="login">Voltar para o login</a>
     </div>
   </main>
 </Layout>
+<script>
+  const modal = document.getElementById("modal");
+  document.getElementById("redefinir").addEventListener("click", function () {
+    console.log(modal, "aaa");
+    modal.showModal();
+    modal.style.display = "flex";
+    console.log("ué");
+  });
+
+  document.getElementById("closeModal").addEventListener("click", function () {
+    console.log(modal, "aaa");
+    modal.style.display = "";
+    modal.close();
+    console.log("ué");
+  });
+</script>
 <style>
+  .modal {
+    width: 22rem;
+    border: 1px solid #4c4d4c;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px #4c4d4c;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: auto auto;
+  }
+  .modal * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .modal::backdrop {
+    background-color: #664c4d4c;
+  }
+
   main {
     width: fit-content;
     margin: 0 auto;

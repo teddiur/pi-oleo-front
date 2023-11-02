@@ -8,11 +8,12 @@ export const Button = ({
   title,
   variant = "primary",
   path,
+  id,
   onClick,
   onClickFailure,
   buttonStyle = {},
 }) => {
-  const buttonId = `${Math.floor(Math.random() * 1000)}`;
+  const buttonId = id || `${Math.floor(Math.random() * 1000)}`;
   const onClickButton = path
     ? () => {
         try {
@@ -23,7 +24,6 @@ export const Button = ({
         }
       }
     : onClick;
-
   const styleVariant = stylesVariant[variant];
 
   return (
