@@ -1,0 +1,46 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Button } from "../components/Button/Button.jsx";
+import { Retiradas } from "../features/Retiradas/Retiradas.jsx";
+import Title from "../components/Title.astro";
+const name = "Nayara";
+---
+
+<Layout title="Home - Óleo Descarte">
+  <script></script>
+  <main>
+    <div class="container">
+      <Title variant="low-hue">
+        Olá, {name}!
+      </Title>
+      <p class="bold">Próxima retirada</p>
+      <Retiradas client:load />
+      <Button
+        title="Cadastrar meu óleo usado agora!"
+        path="cadastro-oleo"
+        client:load
+      />
+    </div>
+  </main>
+</Layout>
+<style>
+  main {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .container {
+    background-color: rgba(172, 222, 186, 0.09);
+    padding: 1.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 22rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
+  .bold {
+    font-weight: 700;
+  }
+</style>
