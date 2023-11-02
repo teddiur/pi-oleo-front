@@ -1,20 +1,121 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import GoBack from "../components/GoBack.astro";
+import busca from "../images/busca.svg";
+import { Image } from "astro:assets";
 import Title from "../components/Title.astro";
 import { Descartar } from "../features/Descartar/Descartar";
+import { Button } from "../components/Button/Button";
+import { Input } from "../components/Input/Input";
+import Select from "../components/Select.astro";
+
+const oils = [
+  { address: "Rua Pedro de Andrade, 200.", volume: 15 },
+  { address: "Rua Major Menino, 503.", volume: 15 },
+  { address: "Rua Francisco Arruda, 404.", volume: 15 },
+  { address: "Rua Nossa Senhora do Legado, 301.", volume: 15 },
+];
+const totalVolume = 23;
+const chosenDistrict = "Vila Ester";
+const districts = [
+  { name: "a" },
+  { name: "ba" },
+  { name: "c" },
+]; /*todo: integrar api */
+const days = [
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado",
+  "Domingo",
+];
 ---
 
 <Layout title="Onde Descartar">
   <main>
     <GoBack />
-    <Title>Onde descartar?</Title>
-    <Descartar client:load />
+    <Image
+      src={busca}
+      alt="Busca"
+      style="align-self: center;margin-top:1rem;"
+    />
+    <Title style="text-align:center; position:relative;" variant="low-hue">
+      Buscar óleo para retirada
+      <div class="bubble"></div>
+    </Title>
+    <Select
+      id="district"
+      name="district"
+      label="Bairro"
+      labelStyle="font-weight: 700;margin-top: 2rem;"
+    >
+      {
+        districts.map((district) => (
+          <option value={district.name}>{district.name}</option>
+        ))
+      }
+    </Select>
+    <Select
+      id="district"
+      name="district"
+      label="Quando sua empresa irá retirar?"
+      labelStyle="font-weight: 700; margin-top: 1rem;"
+    >
+      {days.map((day) => <option value={day}>{day}</option>)}
+    </Select>
+    <Button
+      title="Buscar"
+      id="buscar"
+      buttonStyle={{ marginBottom: "3rem", marginTop: "1rem" }}
+    />
+
+    <Title variant="low-hue">
+      Veja a quantidade de óleo que você pode ir buscar nesse bairro:
+    </Title>
+    <p class="liters">{totalVolume} Litros</p>
+    <Title size="M" style="margin-top:1rem; font-weight:700;">
+      Lista de endereços para retirada no Bairro {chosenDistrict}
+    </Title>
+    {
+      oils.map(({ address, volume }) => (
+        <>
+          <p class="address">{address}</p>
+          <p>{volume} litros para retirar.</p>
+        </>
+      ))
+    }
   </main>
   <style>
     main {
       padding: 1rem;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      max-width: 22rem;
+    }
+    .bubble {
+      width: 5rem;
+      height: 7rem;
+      position: absolute;
+      background-color: rgba(172, 222, 186, 0.3);
+      border-radius: 100%;
+      left: 50%;
+      margin-left: -2.5rem;
+      top: -1rem;
+      z-index: -1;
+    }
+    .address {
+      margin-top: 1rem;
+      font-weight: 700;
+    }
+    p {
+      margin: 0;
+      color: #4c4d4c;
+    }
+    p.liters {
+      margin 1rem 0;
     }
   </style>
 </Layout>

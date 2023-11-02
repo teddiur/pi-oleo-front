@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Input } from "../components/Input/Input.jsx";
 import Title from "../components/Title.astro";
 import { Button } from "../components/Button/Button.jsx";
+import Select from "../components/Select.astro";
 
 const liters = Array.from({ length: 10 }, (_, index) => index + 1);
 const days = [
@@ -22,8 +23,12 @@ const days = [
       <Title variant="low-hue">
         Para cadastrar seu óleo. Preencha os dados abaixo.
       </Title>
-      <label class="first" for="liters">Quantidade em litros</label>
-      <select id="liters" name="liters">
+      <Select
+        id="liters"
+        name="liters"
+        label="Quantidade em litros"
+        labelStyle="margin-top: 1rem"
+      >
         {
           liters.map((x) => (
             <option value={x}>
@@ -31,7 +36,7 @@ const days = [
             </option>
           ))
         }
-      </select>
+      </Select>
       <p>Qual o endereço que vai ser retirado?</p>
       <Input
         label="CEP"
@@ -65,10 +70,14 @@ const days = [
         placeholder="Apartamento 21"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
-      <label for="day">Qual sua disponibilidade para a retirada?</label>
-      <select id="day" name="day">
+      <Select
+        id="day"
+        name="day"
+        label="Qual sua disponibilidade para a retirada?"
+        labelStyle="margin-top: 1rem"
+      >
         {days.map((x) => <option value={x}>{x}</option>)}
-      </select>
+      </Select>
       <Input
         label="Telefone para contato com DDD"
         id="telephone"
@@ -112,5 +121,8 @@ const days = [
   }
   label[for="day"] {
     margin-bottom: 0.25rem;
+  }
+  p {
+    margin-bottom: 0;
   }
 </style>

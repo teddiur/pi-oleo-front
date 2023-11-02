@@ -1,8 +1,8 @@
 ---
-const { variant = "primary", size = "G" } = Astro.props;
+const { variant = "primary", size = "G", style = "" } = Astro.props;
 ---
 
-<h1 class=`base ${variant} ${size}`>
+<h1 class=`base ${variant} ${size}` style={style}>
   <slot />
 </h1>
 <style>

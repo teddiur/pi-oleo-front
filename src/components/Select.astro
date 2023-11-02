@@ -1,0 +1,17 @@
+---
+const { id, name, label, labelStyle, selectStyle } = Astro.props;
+---
+
+<label for={id} style={labelStyle}>{label}</label>
+<select id={id} name={name} style={selectStyle}> <slot /></select>
+<style>
+  select {
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(81, 82, 81, 0.7);
+    background-color: white;
+    margin-top: 0.5rem;
+    color: #515251;
+  }
+  select
+</style>
