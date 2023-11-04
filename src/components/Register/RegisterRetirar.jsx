@@ -66,7 +66,7 @@ export const RegisterRetirar = () => {
         <p>Permitir entrega de óleo no meu endereço.</p>
       </label>
       <span className={styles.buttonContainer}>
-        <Button title="Criar conta" onClick={() => {}} />
+        <Button title="Criar conta" onClick={() => {}} type="submit" />
       </span>
     </>
   );

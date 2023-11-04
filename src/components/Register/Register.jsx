@@ -1,15 +1,16 @@
-import { useState } from "react";
-import { Input } from "../Input/Input.jsx";
+import { useState, useRef } from "react";
 import doador1 from "../../images/doador.svg";
 import doador2 from "../../images/doador-active.svg";
 import retirador1 from "../../images/recebedor.svg";
 import retirador2 from "../../images/recebedor-active.svg";
 import styles from "./Register.module.css";
-
+import axios from "axios";
 import { RegisterDoar } from "./RegisterDoar.jsx";
 import { RegisterRetirar } from "./RegisterRetirar.jsx";
+
 export const Register = () => {
   const [userType, setUserType] = useState(null);
+  const dialogRef = useRef();
 
   const doador = {
     true: doador2,
@@ -19,10 +20,53 @@ export const Register = () => {
     true: retirador2,
     false: retirador1,
   };
-  console.log(userType);
+
+  const cadastrarRetirador = (formValues) => {};
+  const cadastrarDoador = async (formValues) => {
+    const body = {
+      name: formValues.name.value + formValues.surname.value,
+      email: formValues.email.value,
+      telephone: formValues.telephone.value,
+      city: "nope",
+      district: "nope",
+      oil_quantity: 0,
+      password: formValues.password.value,
+    };
+
+    try {
+      const a = await axios.post(
+        "https://oleo-descarte-api.onrender.com/create_user",
+        body
+      );
+      dialogRef?.current?.showModal();
+      setTimeout(() => {
+        dialogRef?.current?.close();
+        window.location.href = "/login";
+      }, 4500);
+    } catch (e) {
+      if (e?.response?.status === 409) {
+        alert("Usuário já cadastrado");
+      }
+    }
+  };
+
   return (
-    <form action="/create-user" method="post" className={styles.form}>
-      <div class={styles.userTypeContainer}>
+    <form
+      id="form"
+      className={styles.form}
+      onSubmit={(e) => {
+        e.preventDefault();
+        const formValues = e.target;
+        if (userType == "retirador") {
+          cadastrarRetirador(formValues);
+        } else if (userType == "doador") {
+          cadastrarDoador(formValues);
+        } else {
+          alert("NOPE");
+        }
+      }}
+    >
+      <div className={styles.userTypeContainer}>
         <input
           type="radio"
           id="doador"
@@ -60,6 +104,13 @@ export const Register = () => {
             {userType == "retirador" ? <RegisterRetirar /> : <RegisterDoar />}
           </>
         )}
+        <dialog ref={dialogRef} className={styles.dialog}>
+          <output className={styles.success}>
+            Cadastro realizado com sucesso!
+            <br />
+            Você será redirecionado a tela de login em 5s...
+          </output>
+        </dialog>
       </div>
     </form>
   );

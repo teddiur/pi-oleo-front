@@ -10,6 +10,7 @@ export const RegisterDoar = () => {
         id="name"
         name="name"
         type="text"
+        required
         placeholder="Digite seu nome"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "1.5rem" }}
       />
@@ -19,6 +20,7 @@ export const RegisterDoar = () => {
         name="surname"
         type="text"
         placeholder="Digite seu sobrenome"
+        required
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
       <Input
@@ -26,6 +28,7 @@ export const RegisterDoar = () => {
         id="email"
         name="email"
         type="email"
+        required
         placeholder="usuario@gmail.com"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
@@ -34,7 +37,8 @@ export const RegisterDoar = () => {
         id="telephone"
         name="telephone"
         type="text"
-        placeholder="(99) 99999-9999"
+        placeholder="99 99999-9999"
+        pattern="\d{2} \d{5}-\d{4}"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
       <Input
@@ -42,6 +46,7 @@ export const RegisterDoar = () => {
         id="password"
         name="password"
         type="password"
+        required
         placeholder="*********"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />

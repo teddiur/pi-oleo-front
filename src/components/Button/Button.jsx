@@ -10,6 +10,7 @@ export const Button = ({
   path,
   id,
   onClick,
+  type,
   onClickFailure,
   buttonStyle = {},
 }) => {
@@ -32,6 +33,7 @@ export const Button = ({
       id={buttonId}
       onClick={onClickButton}
       style={buttonStyle}
+      type={type}
     >
       {title}
     </button>

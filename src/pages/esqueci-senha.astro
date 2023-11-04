@@ -32,17 +32,13 @@ import { Input } from "../components/Input/Input";
 <script>
   const modal = document.getElementById("modal");
   document.getElementById("redefinir").addEventListener("click", function () {
-    console.log(modal, "aaa");
     modal.showModal();
     modal.style.display = "flex";
-    console.log("ué");
   });
 
   document.getElementById("closeModal").addEventListener("click", function () {
-    console.log(modal, "aaa");
     modal.style.display = "";
     modal.close();
-    console.log("ué");
   });
 </script>
 <style>

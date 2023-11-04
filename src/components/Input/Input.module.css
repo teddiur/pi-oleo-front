@@ -1,9 +1,12 @@
-   .input {
-         padding: 8px;
-         border-radius: 10px;
-         border: 1px solid rgba(81, 82, 81, 0.7);
-       }
-       .input:focus {
-         border-color: #1ab945;
-         outline: #1ab945;
-       }
+.input {
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(81, 82, 81, 0.7);
+}
+.input:focus {
+  border-color: #1ab945;
+  outline: #1ab945;
+}
+.input:focus:invalid {
+  border-color: red;
+}
