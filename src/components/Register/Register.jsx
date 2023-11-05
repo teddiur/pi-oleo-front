@@ -20,19 +20,7 @@ export const Register = () => {
     true: retirador2,
     false: retirador1,
   };
-
-  const cadastrarRetirador = (formValues) => {};
-  const cadastrarDoador = async (formValues) => {
-    const body = {
-      name: formValues.name.value + formValues.surname.value,
-      email: formValues.email.value,
-      telephone: formValues.telephone.value,
-      city: "nope",
-      district: "nope",
-      oil_quantity: 0,
-      password: formValues.password.value,
-    };
-
+  const cadastrar = async (body) => {
     try {
       const a = await axios.post(
         "https://oleo-descarte-api.onrender.com/create_user",
@@ -48,6 +36,44 @@ export const Register = () => {
         alert("Usuário já cadastrado");
       }
     }
+  };
+  const cadastrarRetirador = async (formValues) => {
+    const body = {
+      name: formValues.document.value,
+      email: formValues.email.value,
+      telephone: formValues.telephone.value,
+      cep: formValues.cep.value,
+      address: formValues.address.value,
+      password: formValues.password.value,
+      user_type: "retirador",
+      city: "nope",
+      district: "nope",
+      oil_quantity: 0,
+      allow_delivery: formValues.allowDelivery.checked,
+    };
+
+    const a = await axios.get(
+      `https://viacep.com.br/ws/${body.cep.replace("-", "")}/json/`
+    );
+    body.district = a?.data?.bairro;
+    console.log(a);
+
+    cadastrar(body);
+  };
+
+  const cadastrarDoador = async (formValues) => {
+    const body = {
+      email: formValues.email.value,
+      telephone: formValues.telephone.value,
+      password: formValues.password.value,
+      user_type: "doador",
+      city: "nope",
+      district: "nope",
+      name: "nope",
+      oil_quantity: 0,
+    };
+
+    cadastrar(body);
   };
 
   return (
