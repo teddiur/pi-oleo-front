@@ -20,10 +20,12 @@ export const Register = () => {
     true: retirador2,
     false: retirador1,
   };
+
+  // TODO: adicionar loading
   const cadastrar = async (body) => {
     try {
       const a = await axios.post(
-        "https://oleo-descarte-api.onrender.com/create_user",
+        "https://oleo-descarte-api.onrender.com/create_user/",
         body
       );
       dialogRef?.current?.showModal();
