@@ -39,17 +39,17 @@ export const Register = () => {
   };
   const cadastrarRetirador = async (formValues) => {
     const body = {
-      name: formValues.document.value,
+      document: formValues.document.value,
       email: formValues.email.value,
       telephone: formValues.telephone.value,
       cep: formValues.cep.value,
       address: formValues.address.value,
       password: formValues.password.value,
+      allow_delivery: formValues.allowDelivery.checked,
       user_type: "retirador",
       city: "nope",
       district: "nope",
       oil_quantity: 0,
-      allow_delivery: formValues.allowDelivery.checked,
     };
 
     const a = await axios.get(
@@ -63,13 +63,14 @@ export const Register = () => {
 
   const cadastrarDoador = async (formValues) => {
     const body = {
+      name: formValues.name.value,
+      surname: formValues.surname.value,
       email: formValues.email.value,
       telephone: formValues.telephone.value,
       password: formValues.password.value,
       user_type: "doador",
       city: "nope",
       district: "nope",
-      name: "nope",
       oil_quantity: 0,
     };
 
