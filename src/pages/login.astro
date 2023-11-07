@@ -1,15 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import GoBack from "../components/GoBack.astro";
-import { Button } from "../components/Button/Button.jsx";
-import axios from "axios";
 import Title from "../components/Title.astro";
 import { Input } from "../components/Input/Input.jsx";
+import { Loading } from "../components/Loading";
+import { LoginButton } from "../features/LoginButton";
 ---
 
 <Layout title="Login">
   <main>
     <div class="holder">
+      <Loading client:load />
       <GoBack />
       <Title variant="low-hue" size="M">Entrar em sua conta</Title>
       <span class="subtitle">
@@ -41,33 +42,12 @@ import { Input } from "../components/Input/Input.jsx";
           style="font-size: 12px; font-weight: 500; margin-top: 10px;"
           >Esqueci minha senha</a
         >
-        <div style="margin: 20px auto 0 auto">
-          <Button title="Entrar" type="submit" />
-        </div>
+        <LoginButton client:idle />
       </form>
     </div>
   </main>
 </Layout>
-<script>
-  import axios from "axios";
-
-  const loginForm = document.getElementById("login");
-  loginForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const body = new FormData();
-    body.append("username", e.target.username.value);
-    body.append("password", e.target.password.value);
-    const response = await axios.post(
-      "https://oleo-descarte-api.onrender.com/authenticate/",
-      body
-    );
-
-    // TODO: adicionar loading
-    localStorage.setItem("token", response.data.access_token);
-    window.location.href = "/home";
-  });
-</script>
+<script></script>
 <style>
   main {
     margin: 1rem 2rem;
