@@ -3,7 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import { Input } from "../components/Input/Input.jsx";
 import Title from "../components/Title.astro";
 import { Button } from "../components/Button/Button.jsx";
+import { ProtectedRoute } from "../components/ProtectedRoute.jsx";
 import Select from "../components/Select.astro";
+// import { getUser } from "../api";
 
 const liters = Array.from({ length: 10 }, (_, index) => index + 1);
 const days = [
@@ -15,86 +17,90 @@ const days = [
   "Sábado",
   "Domingo",
 ];
+
+// getUser();
 ---
 
 <Layout title="Cadastro - Óleo Descarte">
-  <main>
-    <form class="container">
-      <Title variant="low-hue">
-        Para cadastrar seu óleo. Preencha os dados abaixo.
-      </Title>
-      <Select
-        id="liters"
-        name="liters"
-        label="Quantidade em litros"
-        labelStyle="margin-top: 1rem"
-      >
-        {
-          liters.map((x) => (
-            <option value={x}>
-              {x} {x === 1 ? " Litro" : " Litros"}
-            </option>
-          ))
-        }
-      </Select>
-      <p>Qual o endereço que vai ser retirado?</p>
-      <Input
-        label="CEP"
-        id="cep"
-        name="cep"
-        type="text"
-        placeholder="Digite o CEP"
-        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
-      />
-      <Input
-        label="Endereço"
-        id="address"
-        name="address"
-        type="text"
-        placeholder="Digite a rua ou avenida"
-        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
-      />
-      <Input
-        label="Número da residência"
-        id="number"
-        name="number"
-        type="text"
-        placeholder="Digite o CEP"
-        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
-      />
-      <Input
-        label="Complemento"
-        id="complement"
-        name="complement"
-        type="text"
-        placeholder="Apartamento 21"
-        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
-      />
-      <Select
-        id="day"
-        name="day"
-        label="Qual sua disponibilidade para a retirada?"
-        labelStyle="margin-top: 1rem"
-      >
-        {days.map((x) => <option value={x}>{x}</option>)}
-      </Select>
-      <Input
-        label="Telefone para contato com DDD"
-        id="telephone"
-        name="telephone"
-        type="text"
-        placeholder="(99) 99999-9999"
-        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
-        inputStyle={{ marginBottom: "1.5rem" }}
-      />
-      <Button
-        title="Registrar"
-        path="login"
-        client:load
-        buttonStyle={{ margin: "0 auto" }}
-      />
-    </form>
-  </main>
+  <ProtectedRoute route="/login" client:load>
+    <main>
+      <form class="container">
+        <Title variant="low-hue">
+          Para cadastrar seu óleo. Preencha os dados abaixo.
+        </Title>
+        <Select
+          id="liters"
+          name="liters"
+          label="Quantidade em litros"
+          labelStyle="margin-top: 1rem"
+        >
+          {
+            liters.map((x) => (
+              <option value={x}>
+                {x} {x === 1 ? " Litro" : " Litros"}
+              </option>
+            ))
+          }
+        </Select>
+        <p>Qual o endereço que vai ser retirado?</p>
+        <Input
+          label="CEP"
+          id="cep"
+          name="cep"
+          type="text"
+          placeholder="Digite o CEP"
+          labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+        />
+        <Input
+          label="Endereço"
+          id="address"
+          name="address"
+          type="text"
+          placeholder="Digite a rua ou avenida"
+          labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+        />
+        <Input
+          label="Número da residência"
+          id="number"
+          name="number"
+          type="text"
+          placeholder="Digite o CEP"
+          labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+        />
+        <Input
+          label="Complemento"
+          id="complement"
+          name="complement"
+          type="text"
+          placeholder="Apartamento 21"
+          labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+        />
+        <Select
+          id="day"
+          name="day"
+          label="Qual sua disponibilidade para a retirada?"
+          labelStyle="margin-top: 1rem"
+        >
+          {days.map((x) => <option value={x}>{x}</option>)}
+        </Select>
+        <Input
+          label="Telefone para contato com DDD"
+          id="telephone"
+          name="telephone"
+          type="text"
+          placeholder="(99) 99999-9999"
+          labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+          inputStyle={{ marginBottom: "1.5rem" }}
+        />
+        <Button
+          title="Registrar"
+          path="login"
+          client:load
+          buttonStyle={{ margin: "0 auto" }}
+        />
+      </form>
+    </main>
+  </ProtectedRoute>
 </Layout>
 <style>
   main {

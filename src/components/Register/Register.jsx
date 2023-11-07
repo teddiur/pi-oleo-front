@@ -22,20 +22,16 @@ export const Register = () => {
   };
 
   // TODO: adicionar loading
-  const cadastrar = async (body) => {
+  const cadastrar = async (body, path) => {
     try {
       const a = await axios.post(
-        "https://oleo-descarte-api.onrender.com/create_user/",
+        `https://oleo-descarte-api.onrender.com/${path}/`,
         body
       );
-      dialogRef?.current?.showModal();
-      setTimeout(() => {
-        dialogRef?.current?.close();
-        window.location.href = "/login";
-      }, 4500);
+      window.location.href = "/cadastro-sucesso";
     } catch (e) {
       if (e?.response?.status === 409) {
-        alert("Usuário já cadastrado");
+        window.location.href = "/ja-cadastrado";
       }
     }
   };
@@ -58,9 +54,8 @@ export const Register = () => {
       `https://viacep.com.br/ws/${body.cep.replace("-", "")}/json/`
     );
     body.district = a?.data?.bairro;
-    console.log(a);
 
-    cadastrar(body);
+    cadastrar(body, "collector");
   };
 
   const cadastrarDoador = async (formValues) => {
@@ -76,7 +71,7 @@ export const Register = () => {
       oil_quantity: 0,
     };
 
-    cadastrar(body);
+    cadastrar(body, "donator");
   };
 
   return (

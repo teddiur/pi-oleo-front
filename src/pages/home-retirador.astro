@@ -4,10 +4,9 @@ import GoBack from "../components/GoBack.astro";
 import busca from "../images/busca.svg";
 import { Image } from "astro:assets";
 import Title from "../components/Title.astro";
-import { Descartar } from "../features/Descartar/Descartar";
 import { Button } from "../components/Button/Button";
-import { Input } from "../components/Input/Input";
 import Select from "../components/Select.astro";
+import { ProtectedRoute } from "../components/ProtectedRoute";
 
 const oils = [
   { address: "Rua Pedro de Andrade, 200.", volume: 15 },
@@ -34,6 +33,7 @@ const days = [
 ---
 
 <Layout title="Onde Descartar">
+  <ProtectedRoute route="/login">
   <main>
     <GoBack />
     <Image
@@ -87,35 +87,36 @@ const days = [
       ))
     }
   </main>
-  <style>
-    main {
-      padding: 1rem;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      max-width: 22rem;
-    }
-    .bubble {
-      width: 5rem;
-      height: 7rem;
-      position: absolute;
-      background-color: rgba(172, 222, 186, 0.3);
-      border-radius: 100%;
-      left: 50%;
-      margin-left: -2.5rem;
-      top: -1rem;
-      z-index: -1;
-    }
-    .address {
-      margin-top: 1rem;
-      font-weight: 700;
-    }
-    p {
-      margin: 0;
-      color: #4c4d4c;
-    }
-    p.liters {
-      margin 1rem 0;
-    }
-  </style>
+  </ProtectedRoute>
 </Layout>
+<style>
+  main {
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 22rem;
+  }
+  .bubble {
+    width: 5rem;
+    height: 7rem;
+    position: absolute;
+    background-color: rgba(172, 222, 186, 0.3);
+    border-radius: 100%;
+    left: 50%;
+    margin-left: -2.5rem;
+    top: -1rem;
+    z-index: -1;
+  }
+  .address {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+  p {
+    margin: 0;
+    color: #4c4d4c;
+  }
+  p.liters {
+    margin 1rem 0;
+  }
+</style>
