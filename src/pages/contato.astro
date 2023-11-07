@@ -6,9 +6,11 @@ import email from "../images/email.svg";
 ---
 
 <Layout title="Contato">
-  <GoBack />
   <div class="container">
-    <span>
+    <span style="align-self: self-start;">
+      <GoBack />
+    </span>
+    <span class="span">
       <Image src={email} alt="email" />
     </span>
     <h1>Entre em contato via e-mail</h1>
@@ -23,6 +25,7 @@ import email from "../images/email.svg";
       align-items: center;
       padding: 2rem 1rem;
       max-width: 22rem;
+      min-width: 20rem;
       margin: 0 auto;
     }
     h1 {
@@ -33,7 +36,7 @@ import email from "../images/email.svg";
     a {
       color: #4c4d4c;
     }
-    span {
+    .span {
       background-color: rgba(172, 222, 186, 0.09);
       border-radius: 50%;
       padding: 1rem;

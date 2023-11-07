@@ -59,7 +59,7 @@ import { Input } from "../components/Input/Input.jsx";
     body.append("username", e.target.username.value);
     body.append("password", e.target.password.value);
     const response = await axios.post(
-      "https://oleo-descarte-api.onrender.com/token/",
+      "https://oleo-descarte-api.onrender.com/authenticate/",
       body
     );
 
