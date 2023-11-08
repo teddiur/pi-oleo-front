@@ -5,6 +5,7 @@ import retirador1 from "../../images/recebedor.svg";
 import retirador2 from "../../images/recebedor-active.svg";
 import styles from "./Register.module.css";
 import axios from "axios";
+import { loading } from "../stores/loading.js";
 import { RegisterDoar } from "./RegisterDoar.jsx";
 import { RegisterRetirar } from "./RegisterRetirar.jsx";
 
@@ -23,14 +24,17 @@ export const Register = () => {
 
   // TODO: adicionar loading
   const cadastrar = async (body, path) => {
+    loading.set(true);
     try {
       const a = await axios.post(
         `https://oleo-descarte-api.onrender.com/${path}/`,
         body
       );
+      loading.set(false);
       window.location.href = "/cadastro-sucesso";
     } catch (e) {
       if (e?.response?.status === 409) {
+        loading.set(false);
         window.location.href = "/ja-cadastrado";
       }
     }

@@ -1,22 +1,17 @@
 import { useEffect } from "react";
 import { Button } from "../components/Button/Button.jsx";
 import { loading } from "../stores/loading.js";
-import { useStore } from "@nanostores/react";
 import axios from "axios";
 
 export const LoginButton = () => {
-  const $loading = useStore(loading);
-  const onClick = () => {};
-
   useEffect(() => {
     const loginForm = document.getElementById("login");
     loginForm.addEventListener("submit", async function (e) {
-      loading.set(!$loading);
+      loading.set(true);
 
       e.preventDefault();
 
       const body = new FormData();
-      // return;
       body.append("username", e.target.username.value);
       body.append("password", e.target.password.value);
       const response = await axios.post(
@@ -25,9 +20,13 @@ export const LoginButton = () => {
       );
 
       localStorage.setItem("token", response.data.access_token);
-      loading.set(!$loading);
+      loading.set(false);
 
-      window.location.href = "/home-doador";
+      if (response.data.user_type == "doador") {
+        window.location.href = "/home-doador";
+      } else {
+        window.location.href = "/home-retirador";
+      }
     });
   }, []);
   return (

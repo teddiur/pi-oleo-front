@@ -3,11 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import GoBack from "../components/GoBack.astro";
 import Title from "../components/Title.astro";
 import { Register } from "../components/Register/Register.jsx";
+import { Loading } from "../components/Loading";
 ---
 
 <Layout title="Cadastro - Óleo Descarte">
   <main>
     <GoBack />
+    <Loading client:load />
     <Title variant="low-hue" size="M">
       Para se cadastrar. Preencha os dados abaixo.
     </Title>

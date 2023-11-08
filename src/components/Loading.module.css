@@ -1,3 +1,24 @@
 .loading::backdrop {
     background-color: #664c4d4c;
 }
+
+.loading {
+    border-radius: 2rem;
+    padding: 5rem;
+}
+
+.spinner {
+ width: 10rem;
+ height: 10rem;
+ animation: spin 1s linear infinite;
+
+
+}
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

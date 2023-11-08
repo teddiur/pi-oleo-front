@@ -1,18 +1,22 @@
 import { useEffect } from "react";
 import axios from "axios";
+import { getAxios } from "../api/";
 
 export const ProtectedRoute = ({ route, children }) => {
   useEffect(() => {
     const a = async () => {
       const token = localStorage?.getItem("token") || "";
-      if (!token) return null;
+
+      if (!token) {
+        window.location.href = "/";
+      }
 
       try {
-        await axios.post(
-          `https://oleo-descarte-api.onrender.com/validate_token/?token=${token}`
-        );
+        await getAxios().get(`/current-user/`);
       } catch (e) {
-        window.location.href = route;
+        if (e.response.status === 401) {
+          window.location.href = route;
+        }
       }
     };
     a();
