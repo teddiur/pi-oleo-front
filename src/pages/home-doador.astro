@@ -2,9 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import { Button } from "../components/Button/Button.jsx";
 import { Retiradas } from "../features/Retiradas/Retiradas.jsx";
-import Title from "../components/Title.astro";
 import { ProtectedRoute } from "../components/ProtectedRoute";
-const name = "Nayara";
+import HomeName from "../features/HomeName.jsx";
 ---
 
 <Layout title="Home - Óleo Descarte">
@@ -12,9 +11,7 @@ const name = "Nayara";
     <script></script>
     <main>
       <div class="container">
-        <Title variant="low-hue">
-          Olá, {name}!
-        </Title>
+        <HomeName client:load />
         <p class="bold">Próxima retirada</p>
         <Retiradas client:load />
         <Button
@@ -47,3 +44,4 @@ const name = "Nayara";
     font-weight: 700;
   }
 </style>
+ ../features/HomeName.jsx/index.js

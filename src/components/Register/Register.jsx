@@ -5,7 +5,7 @@ import retirador1 from "../../images/recebedor.svg";
 import retirador2 from "../../images/recebedor-active.svg";
 import styles from "./Register.module.css";
 import axios from "axios";
-import { loading } from "../stores/loading.js";
+import { loading } from "../../stores/loading.js";
 import { RegisterDoar } from "./RegisterDoar.jsx";
 import { RegisterRetirar } from "./RegisterRetirar.jsx";
 
