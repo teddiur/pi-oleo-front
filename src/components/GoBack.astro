@@ -2,10 +2,26 @@
 
 ---
 
-<a href="/"> &lt; Voltar para o ínicio</a>
+<a href="/" id="go-back"> &lt; Voltar para o ínicio</a>
 <style>
   a {
     color: black;
     font-size: 14px;
   }
 </style>
+<script>
+  import { getAxios } from "../api";
+  console.log("aaaa");
+
+  try {
+    const { data } = await getAxios().get("/current-user/");
+    const a = document.getElementById("go-back");
+    if (data.user_type == "donator") {
+      a.href = "/home-doador";
+    } else {
+      a.href = "/home-retirador";
+    }
+  } catch {
+    console.log("não logado");
+  }
+</script>
