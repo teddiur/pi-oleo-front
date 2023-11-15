@@ -16,9 +16,15 @@ export const getUser = async () => {
 export const getAxios = () => {
   const token = localStorage?.getItem("token") || "";
 
+  return api(token);
+};
+
+export const api = (token, timeout = 1000) => {
+  const auth = token ? { headers: { Authorization: "Bearer " + token } } : {};
+
   return axios.create({
     baseURL: "https://oleo-descarte-api.onrender.com/",
-    timeout: 1000,
-    headers: { Authorization: "Bearer " + token },
+    timeout,
+    ...auth,
   });
 };
