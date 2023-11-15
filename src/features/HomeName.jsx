@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getAxios } from "../api";
-import Title from "../components/Title.astro";
 
 const HomeName = () => {
   const [name, setName] = useState("");
