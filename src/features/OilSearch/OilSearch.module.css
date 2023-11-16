@@ -1,0 +1,7 @@
+.select {
+cursor: pointer;
+padding: 1rem
+}
+.select:hover {
+    background-color: rgba(172, 222, 186, 0.20);
+}

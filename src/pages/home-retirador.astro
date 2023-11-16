@@ -1,41 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import GoBack from "../components/GoBack.astro";
-import busca from "../images/busca.svg";
 import { Image } from "astro:assets";
-import Title from "../components/Title.astro";
-import { Button } from "../components/Button/Button";
-import Select from "../components/Select.astro";
+import { api } from "../api";
 import { ProtectedRoute } from "../components/ProtectedRoute";
+import Select from "../components/Select.astro";
+import Title from "../components/Title.astro";
+import OilSearch from '../features/OilSearch/OilSearch';
+import busca from "../images/busca.svg";
+import Layout from "../layouts/Layout.astro";
 
-const oils = [
-  { address: "Rua Pedro de Andrade, 200.", volume: 15 },
-  { address: "Rua Major Menino, 503.", volume: 15 },
-  { address: "Rua Francisco Arruda, 404.", volume: 15 },
-  { address: "Rua Nossa Senhora do Legado, 301.", volume: 15 },
-];
-const totalVolume = 23;
-const chosenDistrict = "Vila Ester";
-const districts = [
-  { name: "a" },
-  { name: "ba" },
-  { name: "c" },
-]; /*todo: integrar api */
-const days = [
-  "Segunda-feira",
-  "Terça-feira",
-  "Quarta-feira",
-  "Quinta-feira",
-  "Sexta-feira",
-  "Sábado",
-  "Domingo",
-];
+
+const {data} = await api({} ).get('/oil/districts/')
+const districts = data.map(x => ({name: x}))
+
 ---
 
 <Layout title="Onde Descartar">
   <ProtectedRoute route="/login">
   <main>
-    <GoBack />
     <Image
       src={busca}
       alt="Busca"
@@ -57,35 +38,8 @@ const days = [
         ))
       }
     </Select>
-    <Select
-      id="district"
-      name="district"
-      label="Quando sua empresa irá retirar?"
-      labelStyle="font-weight: 700; margin-top: 1rem;"
-    >
-      {days.map((day) => <option value={day}>{day}</option>)}
-    </Select>
-    <Button
-      title="Buscar"
-      id="buscar"
-      buttonStyle={{ marginBottom: "3rem", marginTop: "1rem" }}
-    />
+    <OilSearch client:idle />
 
-    <Title variant="low-hue">
-      Veja a quantidade de óleo que você pode ir buscar nesse bairro:
-    </Title>
-    <p class="liters">{totalVolume} Litros</p>
-    <Title size="M" style="margin-top:1rem; font-weight:700;">
-      Lista de endereços para retirada no Bairro {chosenDistrict}
-    </Title>
-    {
-      oils.map(({ address, volume }) => (
-        <>
-          <p class="address">{address}</p>
-          <p>{volume} litros para retirar.</p>
-        </>
-      ))
-    }
   </main>
   </ProtectedRoute>
 </Layout>
@@ -94,8 +48,11 @@ const days = [
     padding: 1rem;
     margin: 0 auto;
     display: flex;
+    background-color: rgba(172, 222, 186, 0.09);
     flex-direction: column;
-    max-width: 22rem;
+    max-width: 22rem;    
+    border-radius: 0.5rem;
+    padding: 1.5rem 3rem;
   }
   .bubble {
     width: 5rem;

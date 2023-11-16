@@ -16,10 +16,10 @@ export const getUser = async () => {
 export const getAxios = () => {
   const token = localStorage?.getItem("token") || "";
 
-  return api(token);
+  return api({ token });
 };
 
-export const api = (token, timeout = 1000) => {
+export const api = ({ token = null, timeout = 1000 }) => {
   const auth = token ? { headers: { Authorization: "Bearer " + token } } : {};
 
   return axios.create({
