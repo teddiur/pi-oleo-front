@@ -13,6 +13,7 @@ export const Button = ({
   type,
   onClickFailure,
   buttonStyle = {},
+  onSubmit,
 }) => {
   const buttonId = id || `${Math.floor(Math.random() * 1000)}`;
   const onClickButton = path
@@ -34,6 +35,7 @@ export const Button = ({
       onClick={onClickButton}
       style={buttonStyle}
       type={type}
+      onSubmit={onSubmit}
     >
       {title}
     </button>

@@ -49,9 +49,6 @@ export const Register = () => {
       password: formValues.password.value,
       allow_delivery: formValues.allowDelivery.checked,
       user_type: "retirador",
-      city: "nope",
-      district: "nope",
-      oil_quantity: 0,
     };
 
     const a = await axios.get(
@@ -70,9 +67,6 @@ export const Register = () => {
       telephone: formValues.telephone.value,
       password: formValues.password.value,
       user_type: "doador",
-      city: "nope",
-      district: "nope",
-      oil_quantity: 0,
     };
 
     cadastrar(body, "donator");

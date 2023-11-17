@@ -32,11 +32,9 @@ const districts = data.map(x => ({name: x}))
       label="Bairro"
       labelStyle="font-weight: 700;margin-top: 2rem;"
     >
-      {
-        districts.map((district) => (
+      {districts.map((district) => (
           <option value={district.name}>{district.name}</option>
-        ))
-      }
+        ))}
     </Select>
     <OilSearch client:idle />
 

@@ -2,9 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import { Input } from "../components/Input/Input.jsx";
 import Title from "../components/Title.astro";
-import { Button } from "../components/Button/Button.jsx";
+import RegisterOilButton from "../features/RegisterOilButton";
 import { ProtectedRoute } from "../components/ProtectedRoute.jsx";
 import Select from "../components/Select.astro";
+import { Loading } from "../components/Loading";
 
 const liters = Array.from({ length: 10 }, (_, index) => index + 1);
 const days = [
@@ -21,7 +22,8 @@ const days = [
 <Layout title="Cadastro - Óleo Descarte">
   <ProtectedRoute route="/login" client:load>
     <main>
-      <form class="container">
+      <Loading client:load />
+      <form class="container" id="submit-oil">
         <Title variant="low-hue">
           Para cadastrar seu óleo. Preencha os dados abaixo.
         </Title>
@@ -46,12 +48,14 @@ const days = [
           name="cep"
           type="text"
           placeholder="Digite o CEP"
+          required
           labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
         />
         <Input
           label="Endereço"
           id="address"
           name="address"
+          required
           type="text"
           placeholder="Digite a rua ou avenida"
           labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
@@ -60,8 +64,9 @@ const days = [
           label="Número da residência"
           id="number"
           name="number"
+          required
           type="text"
-          placeholder="Digite o CEP"
+          placeholder="Digite o número da residência (sn para sem número)"
           labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
         />
         <Input
@@ -74,6 +79,7 @@ const days = [
         />
         <Select
           id="day"
+          required
           name="day"
           label="Qual sua disponibilidade para a retirada?"
           labelStyle="margin-top: 1rem"
@@ -89,16 +95,12 @@ const days = [
           labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
           inputStyle={{ marginBottom: "1.5rem" }}
         />
-        <Button
-          title="Registrar"
-          path="login"
-          client:load
-          buttonStyle={{ margin: "0 auto" }}
-        />
+        <RegisterOilButton client:load />
       </form>
     </main>
   </ProtectedRoute>
 </Layout>
+
 <style>
   main {
     width: fit-content;

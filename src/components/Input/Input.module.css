@@ -10,3 +10,7 @@
 .input:focus:invalid {
   border-color: red;
 }
+
+.input::placeholder {
+  color: gray;
+}

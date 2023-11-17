@@ -37,7 +37,11 @@ export const Retiradas = () => {
   return (
     <>
       <React.Fragment key="day">
-        <p className={styles.day}>{user.day}</p>
+        {user.day ? (
+          <p className={styles.day}>{user.day}</p>
+        ) : (
+          <p className={styles.day}>Doação ainda não agendada para retirada!</p>
+        )}
         <p className={styles.volume}>{user.oilQuantity} litros</p>
       </React.Fragment>
     </>
