@@ -111,8 +111,8 @@ const OilSearch = () => {
                 buttonStyle={{
                   marginBottom: "1rem",
                   marginTop: "1rem",
-                  padding: "0.75 2rem",
                   minWidth: "fit-content",
+                  padding: "0.75rem 2rem",
                 }}
                 onClick={onClick}
               >
