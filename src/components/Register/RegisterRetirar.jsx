@@ -46,7 +46,7 @@ export const RegisterRetirar = () => {
         id="cep"
         name="cep"
         type="text"
-        placeholder="99999-99"
+        placeholder="99999-999"
         pattern="\d{5}-\d{3}"
         required
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}

@@ -4,6 +4,26 @@ import { getAxios } from "../../api";
 import Spinner from "../../components/Spinner";
 import styles from "./OilSearch.module.css";
 
+function proximoDiaSemana(numeroDiaSemana) {
+  // Criar um objeto de data para a data atual
+  var hoje = new Date();
+
+  // Obter o dia atual da semana (0 a 6, onde 0 é domingo e 6 é sábado)
+  var diaAtual = hoje.getDay();
+
+  // Calcular a diferença de dias para o próximo dia desejado
+  var diferencaDias = numeroDiaSemana - diaAtual;
+
+  // Se a diferença for não negativa, adicionar essa diferença aos dias atuais
+  // Se for negativa, adicionar 7 dias (uma semana) mais a diferença
+  diferencaDias = diferencaDias >= 0 ? diferencaDias : diferencaDias + 7;
+
+  // Adicionar a diferença de dias à data atual
+  hoje.setDate(hoje.getDate() + diferencaDias);
+
+  return hoje;
+}
+
 const OilSearch = () => {
   const [chosenDistrict, setChosenDistrict] = useState([]);
   const [oils, setOils] = useState([]);
@@ -30,6 +50,7 @@ const OilSearch = () => {
               if (a.day < b.day) return -1;
               return 0;
             });
+
             setOils(oilsAvailable);
           } catch {
             console.log("hm");
@@ -53,7 +74,7 @@ const OilSearch = () => {
           >
             Veja a quantidade de óleo que você pode ir buscar nesse bairro:
           </h1>
-          <p class="liters">{totalVolume} Litros</p>
+          <p className="liters">{totalVolume} Litros</p>
           <h1
             style={{
               color: "#1dbc4a",
@@ -65,28 +86,57 @@ const OilSearch = () => {
           >
             Lista de endereços para retirada no Bairro {chosenDistrict}
           </h1>
-          {oils.map(({ address, oil_quantity }) => (
-            <div key={address} className={styles.select}>
-              <p
-                style={{
-                  margin: 0,
-                  fontWeight: 700,
-                  lineHeight: "normal",
-                }}
-              >
-                {address}
-              </p>
-              <p
-                style={{
-                  color: "#515251",
-                  margin: "0.25rem 0 0 0",
-                  lineHeight: "normal",
-                }}
-              >
-                {oil_quantity} litros para retirar.
-              </p>
-            </div>
-          ))}
+          {oils.map(({ address, oil_quantity, day_available, id }) => {
+            const onClick = () => {
+              const translator = {
+                domingo: 0,
+                segunda: 1,
+                terca: 2,
+                quarta: 3,
+                quinta: 4,
+                sexta: 5,
+                sabado: 6,
+              };
+
+              const collectDay = proximoDiaSemana(translator[day_available]);
+
+              getAxios().post("/oil/collect", {
+                day: collectDay.toISOString("pt-BR").slice(0, 10),
+                ids: [id],
+              });
+            };
+            return (
+              <div key={address} className={styles.select} onClick={onClick}>
+                <p
+                  style={{
+                    margin: 0,
+                    fontWeight: 700,
+                    lineHeight: "normal",
+                  }}
+                >
+                  {address}
+                </p>
+                <p
+                  style={{
+                    color: "#515251",
+                    margin: "0.25rem 0 0 0",
+                    lineHeight: "normal",
+                  }}
+                >
+                  {oil_quantity} litros para retirar.
+                </p>
+                <p
+                  style={{
+                    color: "#515251",
+                    margin: "0.25rem 0 0 0",
+                    lineHeight: "normal",
+                  }}
+                >
+                  Dia para retirar: {day_available}
+                </p>
+              </div>
+            );
+          })}
         </>
       )}
     </>

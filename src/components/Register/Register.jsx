@@ -49,6 +49,7 @@ export const Register = () => {
       password: formValues.password.value,
       allow_delivery: formValues.allowDelivery.checked,
       user_type: "retirador",
+      name: "giovaniiiiii",
     };
 
     const a = await axios.get(
