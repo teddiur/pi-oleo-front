@@ -5,14 +5,14 @@ import Title from "../components/Title.astro";
 import { Descartar } from "../features/Descartar/Descartar";
 import { api } from "../api";
 
-const { data: descartadores } = await api().get("/collectors/");
+const { data } = await api({}).get("/collectors/");
 ---
 
 <Layout title="Onde Descartar">
   <main>
     <GoBack />
     <Title style="margin-bottom: 2rem;">Onde descartar?</Title>
-    <Descartar descartadores={descartadores} />
+    <Descartar descartadores={data} client:load />
   </main>
   <style>
     main {
