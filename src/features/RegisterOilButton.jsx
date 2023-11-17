@@ -17,7 +17,7 @@ const RegisterOilButton = () => {
       address: form.address.value,
       address_number: form.number.value,
       complement: form.complement.value,
-      day_available: form.day.value.lower(),
+      day_available: form.day.value,
       telephone: form.telephone.value,
     };
     const a = await axios.get(
@@ -29,7 +29,6 @@ const RegisterOilButton = () => {
 
     try {
       const response = await getAxios().post("/oil/", body);
-      console.log(response);
       loading.set(false);
     } catch {
       loading.set(false);
@@ -42,7 +41,6 @@ const RegisterOilButton = () => {
   useEffect(() => {
     const loginForm = document.getElementById("submit-oil");
     loginForm.addEventListener("submit", onSubmit);
-    console.log(loginForm);
   }, []);
 
   return (

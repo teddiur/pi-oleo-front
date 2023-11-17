@@ -126,7 +126,13 @@ export const Register = () => {
             {userType == "retirador" ? <RegisterRetirar /> : <RegisterDoar />}
           </>
         )}
-        <dialog ref={dialogRef} className={styles.dialog}>
+        <dialog
+          ref={dialogRef}
+          className={styles.dialog}
+          role="dialog"
+          aria-labelledby="Cadastro realizado com sucesso"
+          aria-describedby="Você será redirecionado para a tela de login"
+        >
           <output className={styles.success}>
             Cadastro realizado com sucesso!
             <br />

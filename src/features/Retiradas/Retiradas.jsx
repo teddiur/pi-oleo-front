@@ -9,13 +9,18 @@ export const Retiradas = () => {
 
   useEffect(() => {
     const get = async () => {
-      const { data } = await getAxios().get(`/my-oil/`);
-      console.log(data, "vaaaai");
-      setUser({
-        hasOil: data.oil_quantity > 0,
-        oilQuantity: data.oil_quantity,
-        day: data.day ? new Date(data.day).toLocaleDateString("pt-BR") : "",
-      });
+      try {
+        const { data } = await getAxios().get(`/my-oil/`);
+        setUser({
+          hasOil: data.oil_quantity > 0,
+          oilQuantity: data.oil_quantity,
+          day: data.day ? new Date(data.day).toLocaleDateString("pt-BR") : "",
+        });
+      } catch (e) {
+        if (e.response.status === 404) {
+          setUser({ hasOil: false });
+        }
+      }
     };
     get();
   }, []);

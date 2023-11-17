@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const getUser = async () => {
   const token = localStorage?.getItem("token") || "";
-  console.log(token, "fuuu");
 
   if (!token) return null;
 
@@ -10,7 +9,6 @@ export const getUser = async () => {
     `https://oleo-descarte-api.onrender.com/${path}/`,
     body
   );
-  console.log(response);
 };
 
 export const getAxios = () => {
