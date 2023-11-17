@@ -149,6 +149,7 @@ const OilSearch = () => {
                 key={address}
                 className={styles.select}
                 onClick={() => {
+                  const shortDay = day_available.split("-")[0];
                   const translator = {
                     domingo: 0,
                     segunda: 1,
@@ -159,7 +160,9 @@ const OilSearch = () => {
                     sabado: 6,
                   };
 
-                  const day = proximoDiaSemana(translator[day_available]);
+                  const day = proximoDiaSemana(
+                    translator[shortDay.toLowerCase()]
+                  );
 
                   setSelectedOil({
                     address,
