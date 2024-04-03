@@ -1,8 +1,11 @@
+import axios from "axios";
 import { Input } from "../Input/Input.jsx";
 import { Button } from "../Button/Button.jsx";
 import styles from "./Register.module.css";
+import { useRef } from "react";
 
 export const RegisterRetirar = () => {
+  const addressRef = useRef();
   return (
     <>
       <Input
@@ -48,6 +51,12 @@ export const RegisterRetirar = () => {
         type="text"
         placeholder="99999-999"
         pattern="\d{5}-\d{3}"
+        onBlur={async (e) => {
+          const a = await axios.get(
+            `https://viacep.com.br/ws/${e.target.value.replace("-", "")}/json/`
+          );
+          if (a.status == 200) addressRef.current.value = a.data.logradouro;
+        }}
         required
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
@@ -57,6 +66,7 @@ export const RegisterRetirar = () => {
         name="address"
         type="text"
         placeholder="Digite a rua ou avenida"
+        ref={addressRef}
         required
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
