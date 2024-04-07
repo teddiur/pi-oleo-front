@@ -37,6 +37,7 @@ export const RegisterDoar = () => {
         id="telephone"
         name="telephone"
         type="text"
+        mask="99 99999-9999"
         placeholder="99 99999-9999"
         pattern="\d{2} \d{5}-\d{4}"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}

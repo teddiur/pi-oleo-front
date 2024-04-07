@@ -3,6 +3,8 @@ import { Input } from "../Input/Input.jsx";
 import { Button } from "../Button/Button.jsx";
 import styles from "./Register.module.css";
 import { useRef } from "react";
+import InputMask from "react-input-mask";
+import { Label } from "../Label/Label";
 
 export const RegisterRetirar = () => {
   const addressRef = useRef();
@@ -41,24 +43,28 @@ export const RegisterRetirar = () => {
         name="telephone"
         type="text"
         pattern="\d{2} \d{5}-\d{4}"
+        mask="99 99999-9999"
         placeholder="99 99999-9999"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
+
       <Input
         label="CEP"
         id="cep"
         name="cep"
         type="text"
-        placeholder="99999-999"
+        placeholder="99999-9999"
+        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+        mask="99999-9999"
         pattern="\d{5}-\d{3}"
         onBlur={async (e) => {
-          const a = await axios.get(
+          const response = await axios.get(
             `https://viacep.com.br/ws/${e.target.value.replace("-", "")}/json/`
           );
-          if (a.status == 200) addressRef.current.value = a.data.logradouro;
+          if (response.status == 200)
+            addressRef.current.value = response.data.logradouro;
         }}
         required
-        labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
       <Input
         label="Endereço"
