@@ -53,9 +53,9 @@ export const RegisterRetirar = () => {
         id="cep"
         name="cep"
         type="text"
-        placeholder="99999-9999"
+        placeholder="99999-999"
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
-        mask="99999-9999"
+        mask="99999-999"
         pattern="\d{5}-\d{3}"
         onBlur={async (e) => {
           const response = await axios.get(
