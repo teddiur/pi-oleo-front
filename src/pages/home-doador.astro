@@ -1,8 +1,9 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { Retiradas } from "../features/Retiradas/Retiradas.jsx";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import HomeName from "../features/HomeName.jsx";
+import PointsHome from "../features/PointsHome.jsx";
+import { Retiradas } from "../features/Retiradas/Retiradas.jsx";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Home - Óleo Descarte">
@@ -11,8 +12,10 @@ import HomeName from "../features/HomeName.jsx";
     <main>
       <div class="container">
         <HomeName client:load />
-        <p class="bold">Próxima retirada</p>
+        <PointsHome client:load />
+        <hr />
         <Retiradas client:idle />
+        <p>Lembre-se, a cada 1 litro, você recebe 1 ponto.</p>
       </div>
     </main>
   </ProtectedRoute>
@@ -24,7 +27,13 @@ import HomeName from "../features/HomeName.jsx";
     padding: 0 1rem;
     padding-bottom: 2rem;
   }
+  hr {
+    width: 100%;
+  }
 
+  .bold {
+    font-weight: bold;
+  }
   .container {
     background-color: rgba(172, 222, 186, 0.09);
     padding: 1.5rem 3rem;

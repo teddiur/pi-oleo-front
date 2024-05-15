@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import axios from "axios";
 import { getAxios } from "../api/";
 
 export const ProtectedRoute = ({ route, children }) => {

@@ -1,9 +1,12 @@
-.day
-{
+.day {
     margin-bottom: 0;
     font-weight: 700;
-
 }
-.volume{
+
+.volume {
     margin: 0;
+}
+
+.bold {
+    font-style: bold;
 }

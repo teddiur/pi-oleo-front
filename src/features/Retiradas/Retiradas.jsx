@@ -29,25 +29,19 @@ export const Retiradas = () => {
     return <Spinner />;
   }
 
-  if (user.hasOil === false) {
-    return (
-      <Button
-        title="Cadastrar meu óleo usado agora!"
-        path="cadastro-oleo"
-        client:load
-      />
-    );
-  }
-
   return (
     <>
       <React.Fragment key="day">
+        <p class={styles.bold}>Próxima retirada</p>
+
         {user.day ? (
           <p className={styles.day}>{user.day}</p>
         ) : (
           <p className={styles.day}>Doação ainda não agendada para retirada!</p>
         )}
-        <p className={styles.volume}>{user.oilQuantity} litros</p>
+        {user.oilQuantity !== undefined && (
+          <p className={styles.volume}>{user.oilQuantity} litros</p>
+        )}
       </React.Fragment>
     </>
   );
