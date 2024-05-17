@@ -1,0 +1,42 @@
+@media (max-width: 600px) {
+    .large_menu {
+        display: none;
+    }
+
+}
+
+.large_menu a, .container a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: all 1s;
+}
+
+.large_menu a:hover, .container a:hover {
+    color: blue;
+    letter-spacing: .1rem;
+}
+
+@media (min-width: 600px) {
+    .small_menu {
+        display: none;
+    }
+}
+
+.small_menu {
+    position: relative;
+}
+
+.container {
+    min-width: max-content;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    right: 100%;
+    background-color: #128232;
+    padding: 1rem 2rem;
+    border: black 1px solid;
+    border-radius: 5px;
+}
