@@ -136,9 +136,12 @@ const days = [
   }
 </style>
 <script>
+  import { getAxios } from "../api";
   import axios from "axios";
+
   const cep = document.getElementById("cep");
   const address = document.getElementById("address");
+
   cep.addEventListener("blur", async (e) => {
     const response = await axios.get(
       `https://viacep.com.br/ws/${e.target.value.replace("-", "")}/json/`
@@ -147,4 +150,25 @@ const days = [
       address.value = response.data.logradouro;
     }
   });
+
+  const telephone = document.getElementById("telephone");
+  async function getTelephone() {
+    console.log("antes");
+    const { data } = await getAxios().get("/current-user/");
+    let formated;
+    if (data.telephone?.length == 11) {
+      formated =
+        "(" +
+        data.telephone.slice(0, 2) +
+        ") " +
+        data.telephone.slice(2, 7) +
+        "-" +
+        data.telephone.slice(7, 11);
+    } else {
+      formated = data.telephone;
+    }
+
+    telephone.value = formated;
+  }
+  getTelephone();
 </script>

@@ -52,7 +52,7 @@ export const RegisterDoar = () => {
         labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
       />
       <span className={styles.buttonContainer}>
-        <Button title="Criar conta" onClick={() => {}} path="cadastrar" />
+        <Button title="Criar conta" />
       </span>
     </>
   );

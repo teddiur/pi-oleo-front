@@ -26,13 +26,18 @@ export const Register = () => {
   const cadastrar = async (body, path) => {
     loading.set(true);
     try {
+      body.telephone = body.telephone.replace(" ", "").replace("-", "");
       const a = await axios.post(
         `https://oleo-descarte-api.onrender.com/${path}/`,
         body
       );
+
       loading.set(false);
-      window.location.href = "/cadastro-sucesso";
+      if (a.request.status !== 409) {
+        window.location.href = "/cadastro-sucesso";
+      }
     } catch (e) {
+      console.log("errror", e);
       if (e?.response?.status === 409) {
         loading.set(false);
         window.location.href = "/ja-cadastrado";

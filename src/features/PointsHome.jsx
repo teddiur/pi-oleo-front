@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { PointsDisplay } from "./PointsDisplay.jsx";
 import cry from "../images/cry.png";
 import happy from "../images/friend.png";
-
 import { getAxios } from "../api";
+import { levelName } from "../constants/level.js";
 
 const OldPoints = ({ points }) => {
   return (
@@ -41,7 +41,6 @@ const OldPoints = ({ points }) => {
         title="Cadastrar meu óleo usado agora!"
         type="button"
         path="cadastro-oleo"
-        client:load
       />
     </>
   );
@@ -49,23 +48,18 @@ const OldPoints = ({ points }) => {
 
 const PointsHome = () => {
   const [points, setPoints] = useState(0);
-  const [liters, setLiters] = useState(0);
+  const [liters, setLiters] = useState(2);
   const [isOld, setIsOld] = useState(false);
+  const [level, setLevel] = useState(false);
 
   useEffect(() => {
     const get = async () => {
-      let apiPoints, apiOld, apiLiters;
-      if (false) {
-        const { points: apiPoints, is_old: apiOld } = await getAxios().get(
-          `/points/`
-        );
-      } else {
-        apiPoints = 9;
-        apiLiters = 9;
-        apiOld = false;
-      }
-      setPoints(apiPoints);
-      setLiters(apiLiters);
+      const { data } = await getAxios().get("/score/");
+      const { score: apiPoints, is_old: apiOld, level: apiLevel } = data;
+
+      setPoints(apiPoints % 10);
+      setLiters(apiPoints);
+      setLevel(apiLevel);
       setIsOld(apiOld);
     };
     get();
@@ -108,7 +102,11 @@ const PointsHome = () => {
           margin: "2rem 0",
         }}
       >
-        Conquiste o nível 10 e ganhe o selo, amigo do bairro!
+        Conquiste o nível {level + 1} e ganhe o selo,
+        <span style={{ color: "#1dbc4a" }}>
+          {" "}
+          {levelName[level + 1]?.toLowerCase()}!
+        </span>
       </p>
       <Button
         title="Quero subir de nível"

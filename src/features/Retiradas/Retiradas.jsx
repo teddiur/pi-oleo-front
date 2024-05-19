@@ -1,4 +1,3 @@
-import { Button } from "../../components/Button/Button.jsx";
 import Spinner from "../../components/Spinner";
 import styles from "./Retiradas.module.css";
 import React, { useEffect, useState } from "react";
@@ -40,7 +39,10 @@ export const Retiradas = () => {
           <p className={styles.day}>Doação ainda não agendada para retirada!</p>
         )}
         {user.oilQuantity !== undefined && (
-          <p className={styles.volume}>{user.oilQuantity} litros</p>
+          <p className={styles.volume}>
+            {user.oilQuantity} litro{user.oilQuantity > 1 && "s"} cadastrado
+            {user.oilQuantity > 1 && "s"}
+          </p>
         )}
       </React.Fragment>
     </>

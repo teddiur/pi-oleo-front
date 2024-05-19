@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { getAxios } from "../api";
 
 export const PointsDisplay = ({ meter }) => {
   const [points, setPoints] = useState(0);
+  const [meterPoints, setMeterPoints] = useState(0);
   useEffect(() => {
     const get = async () => {
-      let apiPoints, apiOld, apiLiters;
-      if (false) {
-        const { points: apiPoints, is_old: apiOld } = await getAxios().get(
-          `/points/`
-        );
-      } else {
-        apiPoints = 9;
-        apiLiters = 9;
-        apiOld = false;
-      }
-      setPoints(apiPoints);
+      const { data } = await getAxios().get(`/score/`);
+      setPoints(data.score);
+      setMeterPoints(data.score % 10);
     };
     get();
   }, []);
@@ -49,7 +43,12 @@ export const PointsDisplay = ({ meter }) => {
         Pontos
       </p>
       {meter && (
-        <meter max="10" value={points} min="0" style={{ flexGrow: 1 }} />
+        <meter
+          max="10"
+          value={meterPoints}
+          min="0"
+          style={{ flexGrow: 1, minWidth: 200 }}
+        />
       )}
     </div>
   );
