@@ -1,5 +1,6 @@
 import { Button } from "../components/Button/Button.jsx";
 import { useState, useEffect } from "react";
+import { PointsDisplay } from "./PointsDisplay.jsx";
 import cry from "../images/cry.png";
 import happy from "../images/friend.png";
 
@@ -56,7 +57,7 @@ const PointsHome = () => {
       let apiPoints, apiOld, apiLiters;
       if (false) {
         const { points: apiPoints, is_old: apiOld } = await getAxios().get(
-          `/current-points/`
+          `/points/`
         );
       } else {
         apiPoints = 9;
@@ -88,35 +89,8 @@ const PointsHome = () => {
       >
         Você já doou {liters} litros de óleo até agora, veja sua pontuação:
       </p>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <p
-          style={{
-            fontWeight: 900,
-            fontSize: "5rem",
-            color: "#128232",
-            margin: 0,
-          }}
-        >
-          {points}
-        </p>
-        <p
-          style={{
-            fontWeight: 900,
-            fontSize: "2rem",
-            margin: 0,
-          }}
-        >
-          Pontos
-        </p>
-      </div>
+      <PointsDisplay meter={false} />
+
       <span
         style={{
           display: "flex",

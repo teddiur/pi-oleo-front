@@ -8,7 +8,7 @@ import { api } from "../api";
 const { data } = await api({}).get("/collectors/");
 ---
 
-<Layout title="Onde Descartar">
+<Layout title="Onde Descartar" logged={false}>
   <main>
     <GoBack />
     <Title style="margin-bottom: 2rem;">Onde descartar?</Title>

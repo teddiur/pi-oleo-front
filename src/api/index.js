@@ -17,7 +17,7 @@ export const getAxios = () => {
   return api({ token });
 };
 
-export const api = ({ token = null, timeout = 1000 }) => {
+export const api = ({ token = null, timeout = 10000 }) => {
   const auth = token ? { headers: { Authorization: "Bearer " + token } } : {};
 
   return axios.create({

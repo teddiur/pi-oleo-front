@@ -2,26 +2,42 @@ import React from "react";
 import hamburguer from "../../images/hamburguer.svg";
 import style from "./HamburguerMenu.module.css";
 
-export const HamburguerMenu = () => {
+export const HamburguerMenu = ({ logged }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <>
       <div className={style.large_menu}>
-        <a href="login">Login</a>
+        {logged ? (
+          <>
+            <a href="perfil">Perfil</a>
+          </>
+        ) : (
+          <>
+            <a href="login">Login</a>
+            <a href="cadastrar">Criar conta</a>
+          </>
+        )}
         <a href="contato">Contato</a>
         <a href="perguntas-frequentes">Dúvidas</a>
         <a href="onde-descartar">Onde descartar?</a>
-        <a href="cadastrar">Criar conta</a>
       </div>
       <div className={style.small_menu}>
         {isOpen ? (
           <div className={style.container}>
-            <a href="login">Login</a>
+            {logged ? (
+              <>
+                <a href="perfil">Perfil</a>
+              </>
+            ) : (
+              <>
+                <a href="login">Login</a>
+                <a href="cadastrar">Criar conta</a>
+              </>
+            )}
             <a href="contato">Contato</a>
             <a href="perguntas-frequentes">Dúvidas</a>
             <a href="onde-descartar">Onde descartar?</a>
-            <a href="cadastrar">Criar conta</a>
           </div>
         ) : (
           <img

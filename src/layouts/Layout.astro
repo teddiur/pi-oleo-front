@@ -1,9 +1,10 @@
 ---
 interface Props {
   title: string;
+  logged: boolean;
 }
 
-const { title } = Astro.props;
+const { title, logged } = Astro.props;
 import { HamburguerMenu } from "../components/HamburguerMenu/HamburguerMenu";
 import "../styles/global.css";
 ---
@@ -28,7 +29,7 @@ import "../styles/global.css";
     <header id="title">
       <h1>Óleo Descarte</h1>
 
-      <HamburguerMenu client:load />
+      <HamburguerMenu logged={logged} client:load />
     </header>
     <slot />
     <footer>

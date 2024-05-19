@@ -19,7 +19,7 @@ const days = [
 ];
 ---
 
-<Layout title="Cadastro - Óleo Descarte">
+<Layout title="Cadastro - Óleo Descarte" logged={true}>
   <ProtectedRoute route="/login" client:load>
     <main>
       <Loading client:load />
@@ -48,8 +48,11 @@ const days = [
           name="cep"
           type="text"
           placeholder="Digite o CEP"
+          mask="99999-999"
+          placeholder="99999-999"
           required
           labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
+          client:load
         />
         <Input
           label="Endereço"
@@ -91,7 +94,9 @@ const days = [
           id="telephone"
           name="telephone"
           type="text"
+          mask="(99) 99999-9999"
           placeholder="(99) 99999-9999"
+          client:load
           labelStyle={{ marginBottom: "0.5rem", marginTop: "0.75rem" }}
           inputStyle={{ marginBottom: "1.5rem" }}
         />
@@ -130,3 +135,16 @@ const days = [
     margin-bottom: 0;
   }
 </style>
+<script>
+  import axios from "axios";
+  const cep = document.getElementById("cep");
+  const address = document.getElementById("address");
+  cep.addEventListener("blur", async (e) => {
+    const response = await axios.get(
+      `https://viacep.com.br/ws/${e.target.value.replace("-", "")}/json/`
+    );
+    if (response.status == 200) {
+      address.value = response.data.logradouro;
+    }
+  });
+</script>

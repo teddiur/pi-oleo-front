@@ -1,12 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import GoBack from "../components/GoBack.astro";
 import Title from "../components/Title.astro";
-import { Image } from "astro:assets";
-import email from "../images/email.svg";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Perguntas Frequentes">
+<Layout title="Perguntas Frequentes" logged={false}>
   <div class="container">
     <GoBack />
     <Title>Perguntas Frequentes - FAQ</Title>
@@ -21,8 +19,8 @@ import email from "../images/email.svg";
           Se você já possui uma conta em seu nome, basta acessar a sua área de
           login e cadastrar as informações de quantidade, local e horário para a
           retirada do resíduo de óleo de cozinha.<br /> Caso ainda não tenha uma
-          conta, você deve realizar um rápido cadastro para ter acesso a sua
-          área logada e seguir os passos informados acima.
+          conta, você deve realizar um rápido cadastro para ter acesso a sua área
+          logada e seguir os passos informados acima.
         </p>
       </details>
       <details>

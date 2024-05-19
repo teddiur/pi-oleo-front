@@ -7,13 +7,13 @@ import Title from "../components/Title.astro";
 export const prerender = true;
 ---
 
-<Layout title="Bem vindo ao Óleo Descarte">
+<Layout title="Bem vindo ao Óleo Descarte" logged={false}>
   <main>
     <article class="padding-x" style="padding-top: 45px">
       <Title>Faça o descarte correto de Óleo de Cozinha usado</Title>
       <p style="font-size:14px">
-        A <span class="emphasis bold">Óleo Descarte</span> conecta pessoas e
-        empresas para que o descarte de óleo ganhe o destino correto.
+        A <span class="emphasis bold">Óleo Descarte</span> conecta pessoas e empresas
+        para que o descarte de óleo ganhe o destino correto.
       </p>
       <Button title="Quero fazer parte" path="login" client:load />
     </article>
@@ -26,9 +26,9 @@ export const prerender = true;
       </Title>
       <p>
         A <span class="bold">Óleo Descarte</span> foi criada para ajudar pessoas
-        de diferentes locallidades a descartar seu óleo de cozinha usado de
-        maneira eficiente e correta, acreditamos que juntos, podemos transformar
-        o nosso futuro e o bem estar de todos que vivem em nosso planeta.
+        de diferentes locallidades a descartar seu óleo de cozinha usado de maneira
+        eficiente e correta, acreditamos que juntos, podemos transformar o nosso
+        futuro e o bem estar de todos que vivem em nosso planeta.
       </p>
       <Button
         title="Quero o destino certo para meu óleo usado"

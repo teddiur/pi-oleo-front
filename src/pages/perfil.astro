@@ -1,0 +1,64 @@
+---
+import { PointsDisplay } from "../features/PointsDisplay";
+import Layout from "../layouts/Layout.astro";
+import happy from "../images/friend.png";
+import { Button } from "../components/Button/Button";
+---
+
+<Layout title="Perfil" logged={true}>
+  <main>
+    <h2>Aqui está o seu progresso, <span id="name"></span>!</h2>
+    <PointsDisplay meter={true} client:load />
+    <div class="tier-container">
+      <img {...happy} />
+    </div>
+    <p>
+      Consiga +<span id="points"></span> para conquistar o selo <span
+        class="tier">protetor da água</span
+      >
+    </p>
+    <Button
+      title="Cadastrar mais óleo usado agora!"
+      onClick={() => {}}
+      path="cadastro-oleo"
+    />
+  </main>
+</Layout>
+<style>
+  main {
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    background-color: rgba(172, 222, 186, 0.09);
+    flex-direction: column;
+    max-width: 22rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem 3rem;
+  }
+  .tier {
+    color: #128232;
+  }
+  .tier-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  p {
+    font-weight: bold;
+  }
+</style>
+<script>
+  import { getAxios } from "../api";
+  const nameElement = document.getElementById("name");
+  const pointsElement = document.getElementById("points");
+
+  async function getName() {
+    const {
+      data: { name },
+    } = await getAxios().get(`/current-user/`);
+
+    nameElement.textContent = name;
+    pointsElement.textContent = 1;
+  }
+  getName();
+</script>
