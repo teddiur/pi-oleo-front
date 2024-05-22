@@ -67,7 +67,10 @@ import { Button } from "../components/Button/Button";
     } = await getAxios().get(`/current-user/`);
 
     nameElement.textContent = name;
-    pointsElement.textContent = 1;
+    const {
+      data: { score },
+    } = await getAxios().get(`/score/`);
+    pointsElement.textContent = 10 - score;
   }
   getName();
 </script>

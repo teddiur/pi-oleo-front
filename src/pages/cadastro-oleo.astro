@@ -153,7 +153,6 @@ const days = [
 
   const telephone = document.getElementById("telephone");
   async function getTelephone() {
-    console.log("antes");
     const { data } = await getAxios().get("/current-user/");
     let formated;
     if (data.telephone?.length == 11) {

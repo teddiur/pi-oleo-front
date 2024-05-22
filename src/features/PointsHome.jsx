@@ -68,7 +68,6 @@ const PointsHome = () => {
   if (isOld) {
     return (
       <>
-        <button onClick={() => setIsOld(!isOld)}>toggle</button>
         <OldPoints points={points} />
       </>
     );
