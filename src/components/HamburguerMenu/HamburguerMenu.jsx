@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import hamburguer from "../../images/hamburguer.svg";
 import style from "./HamburguerMenu.module.css";
+import { getAxios } from "../../api";
 
 export const HamburguerMenu = ({ logged }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [homePath, setHomePath] = React.useState("");
+
+  useEffect(() => {
+    async function get() {
+      const { data } = await getAxios().get("/current-user/");
+      if (data.user_type == "donator") {
+        setHomePath("home-doador");
+      } else {
+        setHomePath("home-retirador");
+      }
+    }
+    if (logged) {
+      get();
+    }
+  }, [logged]);
 
   return (
     <>
       <div className={style.large_menu}>
         {logged ? (
           <>
+            <a href={homePath}>Home</a>
             <a href="perfil">Perfil</a>
           </>
         ) : (
@@ -27,6 +44,7 @@ export const HamburguerMenu = ({ logged }) => {
           <div className={style.container}>
             {logged ? (
               <>
+                <a href={homePath}>Home</a>
                 <a href="perfil">Perfil</a>
               </>
             ) : (

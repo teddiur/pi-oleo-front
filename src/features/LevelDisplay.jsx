@@ -47,6 +47,7 @@ export const LevelDisplay = () => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
+              minWidth: "45%",
               fontWeight: "bold",
               ...textStyle,
             }}
