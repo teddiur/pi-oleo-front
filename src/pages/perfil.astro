@@ -73,7 +73,7 @@ import { Button } from "../components/Button/Button";
       data: { score, level },
     } = await getAxios().get(`/score/`);
 
-    pointsElement.textContent = 10 - score;
+    pointsElement.textContent = 10 - (score % 10);
     nextTier.textContent = levelName[level + 1] || "";
   }
   getName();
