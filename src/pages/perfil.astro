@@ -16,8 +16,8 @@ import { Button } from "../components/Button/Button";
       </div>
       <p>
         Consiga +<span id="points"></span> para conquistar o selo <span
-          class="tier">protetor da água</span
-        >
+          class="tier"
+          id="next-tier"></span>
       </p>
     </div>
 
@@ -58,8 +58,10 @@ import { Button } from "../components/Button/Button";
 </style>
 <script>
   import { getAxios } from "../api";
+  import { levelName } from "../constants/level";
   const nameElement = document.getElementById("name");
   const pointsElement = document.getElementById("points");
+  const nextTier = document.getElementById("next-tier");
 
   async function getName() {
     const {
@@ -68,9 +70,11 @@ import { Button } from "../components/Button/Button";
 
     nameElement.textContent = name;
     const {
-      data: { score },
+      data: { score, level },
     } = await getAxios().get(`/score/`);
+
     pointsElement.textContent = 10 - score;
+    nextTier.textContent = levelName[level + 1] || "";
   }
   getName();
 </script>
